@@ -78,7 +78,7 @@ class WPSEO_WooCommerce_Yoast_Tab {
 	}
 
 	/**
-	 * Save the $_POST values from our tab.
+	 * Save the $_POST values from our tab in product page, woocommerce section.
 	 *
 	 * @param int $post_id The post ID.
 	 *
@@ -89,7 +89,7 @@ class WPSEO_WooCommerce_Yoast_Tab {
 			return false;
 		}
 
-		$nonce = filter_input( INPUT_POST, '_wpnonce_yoast_seo_woo' );
+		$nonce = isset( $_POST['_wpnonce_yoast_seo_woo'] ) ? sanitize_text_field( wp_unslash( $_POST['_wpnonce_yoast_seo_woo'] ) ) : null;
 		if ( ! wp_verify_nonce( $nonce, 'yoast_woo_seo_identifiers' ) ) {
 			return false;
 		}
