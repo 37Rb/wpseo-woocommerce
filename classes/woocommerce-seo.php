@@ -443,7 +443,7 @@ class Yoast_WooCommerce_SEO {
 		global $pagenow;
 
 		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Nonce is not required here because we are purely doing a strict equals check.
-		$is_get_wpseo_woo = ( isset( $_GET['page'] ) && is_string( $_GET['page'] ) && $_GET['page'] === 'wpseo_woo' );
+		$is_get_wpseo_woo = ( isset( $_GET['page'] ) && $_GET['page'] === 'wpseo_woo' );
 
 		$is_wpseo_woocommerce_page = ( $pagenow === 'admin.php' && $is_get_wpseo_woo );
 		if ( ! $is_wpseo_woocommerce_page ) {
