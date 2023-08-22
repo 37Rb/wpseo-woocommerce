@@ -12,10 +12,11 @@ yarn-error.log
 .phpunit.result.cache
 .env
 /build
+.vscode/
 
 ############
 # Temp
 ############
 /.tmp
 
-.vscode/
+
