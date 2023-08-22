@@ -89,8 +89,9 @@ class WPSEO_WooCommerce_Yoast_Tab {
 			return false;
 		}
 
-		$nonce = isset( $_POST['_wpnonce_yoast_seo_woo'] ) ? sanitize_text_field( wp_unslash( $_POST['_wpnonce_yoast_seo_woo'] ) ) : null;
-		if ( ! wp_verify_nonce( $nonce, 'yoast_woo_seo_identifiers' ) ) {
+		// No need to sanitize or unslash nonce.
+		// phpcs:ignore WordPress.Security.NonceVerification.Missing, WordPress.Security.ValidatedSanitizedInput.InputNotSanitized, WordPress.Security.ValidatedSanitizedInput.MissingUnslash
+		if ( ! isset( $_POST['_wpnonce_yoast_seo_woo'] ) || ! wp_verify_nonce( $_POST['_wpnonce_yoast_seo_woo'], 'yoast_woo_seo_identifiers' ) ) {
 			return false;
 		}
 
