@@ -12,6 +12,15 @@ use Yoast\WP\Woocommerce\Tests\TestCase;
  */
 class WooCommerce_Yoast_Tab_Test extends TestCase {
 
+		/**
+		 * Removes the used option.
+		 */
+	public function tear_down() {
+		$_POST = [];
+
+		parent::tear_down();
+	}
+
 	/**
 	 * Test our constructor.
 	 *
@@ -57,6 +66,8 @@ class WooCommerce_Yoast_Tab_Test extends TestCase {
 
 		$this->stubTranslationFunctions();
 		$this->stubEscapeFunctions();
+
+		$_POST['_wpnonce_yoast_seo_woo'] = '1234567';
 
 		Functions\stubs(
 			[
@@ -109,10 +120,30 @@ class WooCommerce_Yoast_Tab_Test extends TestCase {
 	 * @covers WPSEO_WooCommerce_Yoast_Tab::save_data
 	 */
 	public function test_save_data_wrong_nonce() {
+
+		$_POST['_wpnonce_yoast_seo_woo'] = '1234567';
+
 		Functions\stubs(
 			[
 				'wp_is_post_revision' => false,
 				'wp_verify_nonce'     => false,
+			]
+		);
+
+		$instance = new WPSEO_WooCommerce_Yoast_Tab();
+		$this->assertFalse( $instance->save_data( 123 ) );
+	}
+
+	/**
+	 * Test whether we don't save any data when there is no valid nonce.
+	 *
+	 * @covers WPSEO_WooCommerce_Yoast_Tab::save_data
+	 */
+	public function test_save_data_no_nonce() {
+
+		Functions\stubs(
+			[
+				'wp_is_post_revision' => false,
 			]
 		);
 
@@ -126,6 +157,8 @@ class WooCommerce_Yoast_Tab_Test extends TestCase {
 	 * @covers WPSEO_WooCommerce_Yoast_Tab::save_data
 	 */
 	public function test_save_data_empty() {
+		$_POST['_wpnonce_yoast_seo_woo'] = '1234567';
+
 		Functions\stubs(
 			[
 				'wp_is_post_revision' => false,
@@ -158,9 +191,10 @@ class WooCommerce_Yoast_Tab_Test extends TestCase {
 		$instance = new WPSEO_WooCommerce_Yoast_Tab();
 
 		$_POST = [
-			'yoast_seo' => [
+			'yoast_seo'              => [
 				'gtin8' => '1234',
 			],
+			'_wpnonce_yoast_seo_woo' => '1234567',
 		];
 		$this->assertTrue( $instance->save_data( 123 ) );
 	}
