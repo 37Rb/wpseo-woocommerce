@@ -49,10 +49,6 @@ module.exports = function( grunt ) {
 			js: [
 				"js/src/**/*.js",
 			],
-			pot: {
-				yoastWooSeoJs: "<%= paths.languages %>yoast-woo-seo-js.pot",
-				gettext: "gettext.pot",
-			},
 		},
 		pkg: grunt.file.readJSON( "package.json" ),
 	};

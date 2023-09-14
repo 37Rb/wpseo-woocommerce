@@ -13,21 +13,5 @@ module.exports = function( grunt ) {
 			command: "composer check-cs",
 		},
 
-		"combine-pot-files": {
-			fromFiles: [
-				"languages/<%= pkg.plugin.textdomain %>-temp.pot",
-				"<%= files.pot.yoastWooSeoJs %>",
-			],
-			toFile: "languages/<%= pkg.plugin.textdomain %>.pot",
-			command: () => {
-				const fromFiles = grunt.config.get( "shell.combine-pot-files.fromFiles" );
-				const toFile = grunt.config.get( "shell.combine-pot-files.toFile" );
-
-				return "msgcat" +
-					" --use-first" +
-					" " + fromFiles.join( " " ) +
-					" > " + toFile;
-			},
-		},
 	};
 };
