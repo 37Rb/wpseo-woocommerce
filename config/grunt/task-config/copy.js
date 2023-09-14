@@ -7,7 +7,6 @@ module.exports = {
 				src: [
 					// Folders to copy
 					"classes/**",
-					"languages/**",
 					"vendor/**",
 					"!vendor/bin",
 					"js/dist/*.js",
