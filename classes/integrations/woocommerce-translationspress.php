@@ -78,7 +78,7 @@ class Yoast_WooCommerce_TranslationsPress implements Integration_Interface {
 	/**
 	 * Short-circuits translations API requests for private projects.
 	 *
-	 * @param bool|array $result         The result object. Default false.
+	 * @param bool|array $result         The result array. Default false.
 	 * @param string     $requested_type The type of translations being requested.
 	 * @param object     $args           Translation API arguments.
 	 *
