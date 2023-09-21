@@ -7,7 +7,6 @@ module.exports = {
 				src: [
 					// Folders to copy
 					"classes/**",
-					"languages/**",
 					"vendor/**",
 					"!vendor/bin",
 					"js/dist/*.js",
@@ -18,10 +17,5 @@ module.exports = {
 				dest: "artifact",
 			},
 		],
-	},
-
-	"makepot-yoast-woo-seo": {
-		src: "<%= files.pot.gettext %>",
-		dest: "<%= files.pot.yoastWooSeoJs %>",
 	},
 };
