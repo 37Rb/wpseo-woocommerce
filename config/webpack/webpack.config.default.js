@@ -54,18 +54,6 @@ const defaultConfig = {
 				use: [
 					{
 						loader: "babel-loader",
-						options: {
-							env: {
-								development: {
-									plugins: [
-										[
-											"@wordpress/babel-plugin-makepot",
-											{ output: "gettext.pot" },
-										],
-									],
-								},
-							},
-						},
 					},
 				],
 			},
