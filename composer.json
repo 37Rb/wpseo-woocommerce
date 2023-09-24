@@ -94,5 +94,17 @@
 		"coverage": [
 			"@php ./vendor/phpunit/phpunit/phpunit"
 		]
+	},
+	"scripts-descriptions": {
+		"lint": "Check the PHP files for parse errors.",
+		"cs": "See a menu with the code style checking script options.",
+		"check-cs": "Check the PHP files for code style violations and best practices.",
+		"check-staged-cs": "Check the staged PHP files for code style violations and best practices.",
+		"check-branch-cs": "Check the PHP files changed in the current branch for code style violations and best practices.",
+		"fix-cs": "Auto-fix code style violations in the PHP files.",
+		"integration-test": "Run the integration tests without code coverage.",
+		"integration-coverage": "Run the integration tests with code coverage.",
+		"test": "Run the unit tests without code coverage.",
+		"coverage": "Run the unit tests with code coverage."
 	}
 }
