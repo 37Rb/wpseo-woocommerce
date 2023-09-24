@@ -5,10 +5,12 @@
  * @package WPSEO\WooCommerce\Tests
  */
 
-define( 'WPSEO_INDEXABLES', true );
+namespace Yoast\WP\Woocommerce\Tests;
 
-if ( file_exists( dirname( __DIR__ ) . '/vendor/autoload.php' ) === false ) {
-	echo PHP_EOL, 'ERROR: Run `composer install` to generate the autoload files before running the unit tests.', PHP_EOL;
+\define( 'WPSEO_INDEXABLES', true );
+
+if ( \file_exists( \dirname( __DIR__ ) . '/vendor/autoload.php' ) === false ) {
+	echo \PHP_EOL, 'ERROR: Run `composer install` to generate the autoload files before running the unit tests.', \PHP_EOL;
 	exit( 1 );
 }
 
