@@ -1,96 +1,110 @@
 {
-    "name": "yoast/wpseo-woocommerce",
-    "description": "This extension to WooCommerce and WordPress SEO by Yoast makes sure there's perfect communication between the two plugins.",
-    "type": "wordpress-plugin",
-    "homepage": "https://yoast.com/wordpress/plugins/yoast-woocommerce-seo/",
-    "license": "GPL-2.0-or-later",
-    "authors": [
-        {
-            "name": "Team Yoast",
-            "email": "support@yoast.com",
-            "homepage": "https://yoast.com"
-        }
-    ],
-    "support": {
-        "issues": "https://github.com/Yoast/wpseo-woocommerce/issues",
-        "source": "https://github.com/Yoast/wpseo-woocommerce"
-    },
-    "autoload": {
-        "classmap": [ "classes/" ]
-    },
-    "autoload-dev": {
-        "classmap": [
-            "tests/",
-            "integration-tests/",
-            "config/"
-        ]
-    },
-    "config": {
-        "platform": {
-            "php": "7.2.5"
-        },
-        "preferred-install": {
-            "yoast/wordpress-seo": "source"
-        },
-        "allow-plugins": {
-            "dealerdirect/phpcodesniffer-composer-installer": true,
-            "composer/installers": true
-        }
-    },
-    "repositories": {
-        "wordpress-seo": {
-            "type": "vcs",
-            "url": "https://github.com/yoast/wordpress-seo"
-        }
-    },
-    "require": {
-        "php": "^7.2.5 || ^8.0",
-        "composer/installers": "^1.12.0"
-    },
-    "require-dev": {
-        "yoast/yoastcs": "^2.3.1",
-        "yoast/wp-test-utils": "^1.1.1",
-        "yoast/wordpress-seo": "dev-trunk@dev"
-    },
-    "extra": {
-        "installer-paths": {
-            "vendor/{$vendor}/{$name}": [
-                "type:wordpress-plugin"
-            ]
-        }
-    },
-    "minimum-stability": "dev",
-    "prefer-stable": true,
-    "scripts": {
-        "lint": [
-            "@php ./vendor/php-parallel-lint/php-parallel-lint/parallel-lint . -e php --show-deprecated --exclude vendor --exclude node_modules --exclude .git --exclude wp-content"
-        ],
-        "cs": [
-            "Yoast\\WP\\Woocommerce\\Composer\\Actions::check_coding_standards"
-        ],
-        "check-cs": [
-            "@php ./vendor/squizlabs/php_codesniffer/bin/phpcs"
-        ],
-        "check-staged-cs": [
-            "@check-cs --filter=GitStaged"
-        ],
-        "check-branch-cs": [
-            "Yoast\\WP\\SEO\\Composer\\Actions::check_branch_cs"
-        ],
-        "fix-cs": [
-            "@php ./vendor/squizlabs/php_codesniffer/bin/phpcbf"
-        ],
-        "integration-test": [
-            "@php ./vendor/phpunit/phpunit/phpunit -c phpunit-integration.xml.dist --no-coverage"
-        ],
-        "integration-coverage": [
-            "@php ./vendor/phpunit/phpunit/phpunit -c phpunit-integration.xml.dist"
-        ],
-        "test": [
-            "@php ./vendor/phpunit/phpunit/phpunit --no-coverage"
-        ],
-        "coverage": [
-            "@php ./vendor/phpunit/phpunit/phpunit"
-        ]
-    }
+	"name": "yoast/wpseo-woocommerce",
+	"description": "This extension to WooCommerce and WordPress SEO by Yoast makes sure there's perfect communication between the two plugins.",
+	"license": "GPL-2.0-or-later",
+	"type": "wordpress-plugin",
+	"authors": [
+		{
+			"name": "Team Yoast",
+			"email": "support@yoast.com",
+			"homepage": "https://yoast.com"
+		}
+	],
+	"homepage": "https://yoast.com/wordpress/plugins/yoast-woocommerce-seo/",
+	"support": {
+		"issues": "https://github.com/Yoast/wpseo-woocommerce/issues",
+		"source": "https://github.com/Yoast/wpseo-woocommerce"
+	},
+	"require": {
+		"php": "^7.2.5 || ^8.0",
+		"composer/installers": "^1.12.0"
+	},
+	"require-dev": {
+		"yoast/wordpress-seo": "dev-trunk@dev",
+		"yoast/wp-test-utils": "^1.1.1",
+		"yoast/yoastcs": "^2.3.1"
+	},
+	"repositories": {
+		"wordpress-seo": {
+			"type": "vcs",
+			"url": "https://github.com/yoast/wordpress-seo"
+		}
+	},
+	"minimum-stability": "dev",
+	"prefer-stable": true,
+	"autoload": {
+		"classmap": [
+			"classes/"
+		]
+	},
+	"autoload-dev": {
+		"classmap": [
+			"tests/",
+			"integration-tests/",
+			"config/"
+		]
+	},
+	"config": {
+		"allow-plugins": {
+			"dealerdirect/phpcodesniffer-composer-installer": true,
+			"composer/installers": true
+		},
+		"platform": {
+			"php": "7.2.5"
+		},
+		"preferred-install": {
+			"yoast/wordpress-seo": "source"
+		}
+	},
+	"extra": {
+		"installer-paths": {
+			"vendor/{$vendor}/{$name}": [
+				"type:wordpress-plugin"
+			]
+		}
+	},
+	"scripts": {
+		"lint": [
+			"@php ./vendor/php-parallel-lint/php-parallel-lint/parallel-lint . -e php --show-deprecated --exclude vendor --exclude node_modules --exclude .git --exclude wp-content"
+		],
+		"cs": [
+			"Yoast\\WP\\Woocommerce\\Composer\\Actions::check_coding_standards"
+		],
+		"check-cs": [
+			"@php ./vendor/squizlabs/php_codesniffer/bin/phpcs"
+		],
+		"check-staged-cs": [
+			"@check-cs --filter=GitStaged"
+		],
+		"check-branch-cs": [
+			"Yoast\\WP\\SEO\\Composer\\Actions::check_branch_cs"
+		],
+		"fix-cs": [
+			"@php ./vendor/squizlabs/php_codesniffer/bin/phpcbf"
+		],
+		"integration-test": [
+			"@php ./vendor/phpunit/phpunit/phpunit -c phpunit-integration.xml.dist --no-coverage"
+		],
+		"integration-coverage": [
+			"@php ./vendor/phpunit/phpunit/phpunit -c phpunit-integration.xml.dist"
+		],
+		"test": [
+			"@php ./vendor/phpunit/phpunit/phpunit --no-coverage"
+		],
+		"coverage": [
+			"@php ./vendor/phpunit/phpunit/phpunit"
+		]
+	},
+	"scripts-descriptions": {
+		"lint": "Check the PHP files for parse errors.",
+		"cs": "See a menu with the code style checking script options.",
+		"check-cs": "Check the PHP files for code style violations and best practices.",
+		"check-staged-cs": "Check the staged PHP files for code style violations and best practices.",
+		"check-branch-cs": "Check the PHP files changed in the current branch for code style violations and best practices.",
+		"fix-cs": "Auto-fix code style violations in the PHP files.",
+		"integration-test": "Run the integration tests without code coverage.",
+		"integration-coverage": "Run the integration tests with code coverage.",
+		"test": "Run the unit tests without code coverage.",
+		"coverage": "Run the unit tests with code coverage."
+	}
 }
