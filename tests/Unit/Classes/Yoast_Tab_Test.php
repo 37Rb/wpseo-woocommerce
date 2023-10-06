@@ -91,7 +91,7 @@ class Yoast_Tab_Test extends TestCase {
 	 *
 	 * @return array
 	 */
-	public function data_add_yoast_seo_fields() {
+	public static function data_add_yoast_seo_fields() {
 		return [
 			[ 'yoast_seo[gtin8]' ],
 			[ '<div id="yoast_seo" class="panel woocommerce_options_panel">' ],
@@ -234,7 +234,7 @@ class Yoast_Tab_Test extends TestCase {
 	 *
 	 * @return array
 	 */
-	public function data_input_field_for_identifier() {
+	public static function data_input_field_for_identifier() {
 		return [
 			[ 'gtin8' ],
 			[ 'GTIN 8' ],
