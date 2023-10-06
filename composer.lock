@@ -2389,12 +2389,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Yoast/wordpress-seo.git",
-                "reference": "b323a498ece8fba15105bf5ac3a03c6ae929e4ee"
+                "reference": "1a842574ad51ddd23d664b41a3dd405aa1493d24"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Yoast/wordpress-seo/zipball/b323a498ece8fba15105bf5ac3a03c6ae929e4ee",
-                "reference": "b323a498ece8fba15105bf5ac3a03c6ae929e4ee",
+                "url": "https://api.github.com/repos/Yoast/wordpress-seo/zipball/1a842574ad51ddd23d664b41a3dd405aa1493d24",
+                "reference": "1a842574ad51ddd23d664b41a3dd405aa1493d24",
                 "shasum": ""
             },
             "require": {
@@ -2410,7 +2410,7 @@
                 "symfony/config": "^3.4",
                 "symfony/dependency-injection": "^3.4",
                 "wordproof/wordpress-sdk": "1.3.5",
-                "yoast/wp-test-utils": "^1.1.1",
+                "yoast/wp-test-utils": "^1.2",
                 "yoast/yoastcs": "^2.3.1"
             },
             "default-branch": true,
@@ -2431,18 +2431,6 @@
                 ]
             },
             "scripts": {
-                "test": [
-                    "@php ./vendor/phpunit/phpunit/phpunit --no-coverage"
-                ],
-                "coverage": [
-                    "@php ./vendor/phpunit/phpunit/phpunit"
-                ],
-                "integration-test": [
-                    "@php ./vendor/phpunit/phpunit/phpunit -c phpunit-integration.xml.dist --no-coverage"
-                ],
-                "integration-coverage": [
-                    "@php ./vendor/phpunit/phpunit/phpunit -c phpunit-integration.xml.dist"
-                ],
                 "lint": [
                     "@php ./vendor/php-parallel-lint/php-parallel-lint/parallel-lint . -e php --show-deprecated --exclude vendor --exclude node_modules --exclude .git"
                 ],
@@ -2459,7 +2447,7 @@
                     "Yoast\\WP\\SEO\\Composer\\Actions::check_coding_standards"
                 ],
                 "check-cs-thresholds": [
-                    "@putenv YOASTCS_THRESHOLD_ERRORS=130",
+                    "@putenv YOASTCS_THRESHOLD_ERRORS=129",
                     "@putenv YOASTCS_THRESHOLD_WARNINGS=202",
                     "Yoast\\WP\\SEO\\Composer\\Actions::check_cs_thresholds"
                 ],
@@ -2481,6 +2469,18 @@
                 ],
                 "fix-cs": [
                     "@php ./vendor/squizlabs/php_codesniffer/bin/phpcbf"
+                ],
+                "test": [
+                    "@php ./vendor/phpunit/phpunit/phpunit --no-coverage"
+                ],
+                "coverage": [
+                    "@php ./vendor/phpunit/phpunit/phpunit"
+                ],
+                "integration-test": [
+                    "@php ./vendor/phpunit/phpunit/phpunit -c phpunit-integration.xml.dist --no-coverage"
+                ],
+                "integration-coverage": [
+                    "@php ./vendor/phpunit/phpunit/phpunit -c phpunit-integration.xml.dist"
                 ],
                 "prefix-dependencies": [
                     "composer prefix-oauth2-client",
@@ -2505,15 +2505,15 @@
                     "composer du --no-scripts",
                     "Yoast\\WP\\SEO\\Composer\\Actions::compile_dependency_injection_container"
                 ],
-                "post-autoload-dump": [
-                    "Yoast\\WP\\SEO\\Composer\\Actions::prefix_dependencies",
-                    "composer compile-di"
-                ],
                 "generate-migration": [
                     "Yoast\\WP\\SEO\\Composer\\Actions::generate_migration"
                 ],
                 "generate-unit-test": [
                     "Yoast\\WP\\SEO\\Composer\\Actions::generate_unit_test"
+                ],
+                "post-autoload-dump": [
+                    "Yoast\\WP\\SEO\\Composer\\Actions::prefix_dependencies",
+                    "composer compile-di"
                 ]
             },
             "license": [
@@ -2538,7 +2538,7 @@
                 "wiki": "https://github.com/Yoast/wordpress-seo/wiki",
                 "source": "https://github.com/Yoast/wordpress-seo"
             },
-            "time": "2023-07-12T10:10:15+00:00"
+            "time": "2023-10-06T06:41:42+00:00"
         },
         {
             "name": "yoast/wp-test-utils",
