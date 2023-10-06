@@ -7,7 +7,7 @@ use Brain\Monkey\Functions;
 use Mockery;
 use WPSEO_WooCommerce_Schema;
 use Yoast\WP\Woocommerce\Tests\Doubles\Schema_Double;
-use Yoast\WP\Woocommerce\Tests\Mocks\Schema_IDs;
+use Yoast\WP\Woocommerce\Tests\Doubles\Schema_IDs_Mock;
 use Yoast\WPTestUtils\BrainMonkey\TestCase;
 
 /**
@@ -49,7 +49,7 @@ class Schema_Test extends TestCase {
 			->with( Mockery::anyOf( [ 'wpseo', 'wpseo_titles', 'wpseo_taxonomy_meta', 'wpseo_social', 'wpseo_ms' ] ) )
 			->andReturn( [] );
 
-		Mockery::mock( 'overload:Yoast\WP\SEO\Config\Schema_IDs', new Schema_IDs() );
+		Mockery::mock( 'overload:Yoast\WP\SEO\Config\Schema_IDs', new Schema_IDs_Mock() );
 
 		$this->set_instance();
 	}
