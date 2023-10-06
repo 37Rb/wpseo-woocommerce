@@ -1,14 +1,13 @@
 <?php
-/**
- * WooCommerce Yoast SEO plugin test file.
- *
- * @package WPSEO/WooCommerce/Tests
- */
+
+namespace Yoast\WP\Woocommerce\Tests\WP\Doubles;
+
+use WPSEO_Option_Woo;
 
 /**
  * Test helper.
  */
-class WPSEO_Option_Woo_Double extends WPSEO_Option_Woo {
+class Option_Woo_Double extends WPSEO_Option_Woo {
 
 	/**
 	 * Makes the constructor public.
