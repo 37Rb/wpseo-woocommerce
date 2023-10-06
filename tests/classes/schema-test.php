@@ -5,7 +5,11 @@ namespace Yoast\WP\Woocommerce\Tests\Classes;
 use Brain\Monkey;
 use Brain\Monkey\Functions;
 use Mockery;
+use stdClass;
 use WPSEO_WooCommerce_Schema;
+use Yoast\WP\SEO\Surfaces\Classes_Surface;
+use Yoast\WP\SEO\Surfaces\Helpers_Surface;
+use Yoast\WP\SEO\Surfaces\Meta_Surface;
 use Yoast\WP\Woocommerce\Tests\Doubles\Schema_Double;
 use Yoast\WP\Woocommerce\Tests\Doubles\Schema_IDs_Mock;
 use Yoast\WPTestUtils\BrainMonkey\TestCase;
@@ -17,7 +21,26 @@ use Yoast\WPTestUtils\BrainMonkey\TestCase;
  */
 class Schema_Test extends TestCase {
 
-	use YoastSEO;
+	/**
+	 * Holds the classes surface.
+	 *
+	 * @var Classes_Surface|Mockery\MockInterface
+	 */
+	public $classes;
+
+	/**
+	 * Holds the meta surface.
+	 *
+	 * @var Meta_Surface|Mockery\MockInterface
+	 */
+	public $meta;
+
+	/**
+	 * Holds the helpers surface.
+	 *
+	 * @var Helpers_Surface|stdClass
+	 */
+	public $helpers;
 
 	/**
 	 * Test setup.
@@ -51,7 +74,7 @@ class Schema_Test extends TestCase {
 
 		Mockery::mock( 'overload:Yoast\WP\SEO\Config\Schema_IDs', new Schema_IDs_Mock() );
 
-		$this->set_instance();
+		$this->mock_yoastseo();
 	}
 
 	/**
@@ -1856,5 +1879,33 @@ class Schema_Test extends TestCase {
 		$output = $schema->filter_offers( $input, $product );
 
 		$this->assertSame( $expected_output, $output );
+	}
+
+	/**
+	 * Mocks the YoastSEO function for the Schema tests.
+	 *
+	 * @return void
+	 */
+	private function mock_yoastseo() {
+		$this->classes = Mockery::mock( 'Yoast\WP\SEO\Surfaces\Classes_Surface' );
+		$this->meta    = Mockery::mock( 'Yoast\WP\SEO\Surfaces\Meta_Surface' );
+		$this->helpers = new stdClass();
+
+		$this->helpers->open_graph = Mockery::mock( 'Yoast\WP\SEO\Surfaces\Open_Graph_Helpers_Surface' );
+		$this->helpers->schema     = new stdClass();
+		$this->helpers->twitter    = Mockery::mock( 'Yoast\WP\SEO\Surfaces\Twitter_Helpers_Surface' );
+
+		$this->helpers->schema->image = Mockery::mock();
+
+		Functions\expect( 'YoastSEO' )
+			->zeroOrMoreTimes()
+			->withNoArgs()
+			->andReturn(
+				(object) [
+					'classes' => $this->classes,
+					'meta'    => $this->meta,
+					'helpers' => $this->helpers,
+				]
+			);
 	}
 }
