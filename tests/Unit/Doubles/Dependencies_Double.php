@@ -1,13 +1,13 @@
 <?php
 
-namespace Yoast\WP\Woocommerce\Tests\Doubles;
+namespace Yoast\WP\Woocommerce\Tests\Unit\Doubles;
 
 use Yoast_WooCommerce_Dependencies;
 
 /**
  * Test Helper Class.
  */
-class Yoast_WooCommerce_Dependencies_Double extends Yoast_WooCommerce_Dependencies {
+class Dependencies_Double extends Yoast_WooCommerce_Dependencies {
 
 	/**
 	 * Checks the plugin's dependencies.

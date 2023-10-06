@@ -1,15 +1,15 @@
 <?php
 
-namespace Yoast\WP\Woocommerce\Tests\Classes;
+namespace Yoast\WP\Woocommerce\Tests\Unit\Classes;
 
 use Brain\Monkey;
 use Brain\Monkey\Functions;
 use Mockery;
 use WPSEO_WooCommerce_Utils;
-use Yoast\WP\Woocommerce\Tests\TestCase;
+use Yoast\WP\Woocommerce\Tests\Unit\TestCase;
 
 /**
- * Class WooCommerce_Schema_Test.
+ * Class Utils_Test.
  */
 class Utils_Test extends TestCase {
 

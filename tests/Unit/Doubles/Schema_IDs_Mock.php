@@ -1,6 +1,6 @@
 <?php
 
-namespace Yoast\WP\Woocommerce\Tests\Doubles;
+namespace Yoast\WP\Woocommerce\Tests\Unit\Doubles;
 
 /**
  * Class Schema_IDs_Mock.

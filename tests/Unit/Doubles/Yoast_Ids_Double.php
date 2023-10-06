@@ -1,11 +1,11 @@
 <?php
 
-namespace Yoast\WP\Woocommerce\Tests\Doubles;
+namespace Yoast\WP\Woocommerce\Tests\Unit\Doubles;
 
 use WPSEO_WooCommerce_Yoast_Ids;
 
 /**
- * Class WPSEO_WooCommerce_Yoast_Tab_Double
+ * Class Yoast_Ids_Double
  */
 class Yoast_Ids_Double extends WPSEO_WooCommerce_Yoast_Ids {
 

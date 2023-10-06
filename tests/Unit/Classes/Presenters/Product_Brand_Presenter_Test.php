@@ -1,6 +1,6 @@
 <?php
 
-namespace Yoast\WP\Woocommerce\Tests\Classes\Presenters;
+namespace Yoast\WP\Woocommerce\Tests\Unit\Classes\Presenters;
 
 use Brain\Monkey\Functions;
 use Mockery;
@@ -8,7 +8,7 @@ use WC_Product;
 use WPSEO_WooCommerce_Product_Brand_Presenter;
 use Yoast\WP\SEO\Helpers\Options_Helper;
 use Yoast\WP\SEO\Presenters\Abstract_Indexable_Tag_Presenter;
-use Yoast\WP\Woocommerce\Tests\TestCase;
+use Yoast\WP\Woocommerce\Tests\Unit\TestCase;
 
 /**
  * Class Product_Brand_Presenter_Test.

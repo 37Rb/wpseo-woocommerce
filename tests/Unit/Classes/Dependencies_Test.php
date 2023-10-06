@@ -1,16 +1,16 @@
 <?php
 
-namespace Yoast\WP\Woocommerce\Tests\Classes;
+namespace Yoast\WP\Woocommerce\Tests\Unit\Classes;
 
 use Brain\Monkey\Functions;
 use Mockery;
-use Yoast\WP\Woocommerce\Tests\Doubles\Yoast_WooCommerce_Dependencies_Double;
-use Yoast\WP\Woocommerce\Tests\TestCase;
+use Yoast\WP\Woocommerce\Tests\Unit\Doubles\Dependencies_Double;
+use Yoast\WP\Woocommerce\Tests\Unit\TestCase;
 
 /**
- * Class WooCommerce_Schema_Test.
+ * Class Dependencies_Test.
  */
-class Yoast_WooCommerce_Dependencies_Test extends TestCase {
+class Dependencies_Test extends TestCase {
 
 	/**
 	 * Tests check dependencies.
@@ -23,7 +23,7 @@ class Yoast_WooCommerce_Dependencies_Test extends TestCase {
 		$valid_wp_version        = '6.2';
 		$valid_yoast_seo_version = '21.6';
 
-		$class = Mockery::mock( Yoast_WooCommerce_Dependencies_Double::class )->makePartial();
+		$class = Mockery::mock( Dependencies_Double::class )->makePartial();
 
 		// Invalid WordPress version.
 		$actual = $class->check_dependencies( '6.1' );
@@ -71,7 +71,7 @@ class Yoast_WooCommerce_Dependencies_Test extends TestCase {
 	 * @covers Yoast_WooCommerce_Dependencies::check_woocommerce_exists
 	 */
 	public function test_check_woocommerce_exists() {
-		$class = Mockery::mock( Yoast_WooCommerce_Dependencies_Double::class )->makePartial();
+		$class = Mockery::mock( Dependencies_Double::class )->makePartial();
 
 		$this->assertFalse( $class->check_woocommerce_exists() );
 
@@ -86,7 +86,7 @@ class Yoast_WooCommerce_Dependencies_Test extends TestCase {
 	 * @covers Yoast_WooCommerce_Dependencies::get_yoast_seo_version
 	 */
 	public function test_get_wordpress_seo_version() {
-		$class = Mockery::mock( Yoast_WooCommerce_Dependencies_Double::class )->makePartial();
+		$class = Mockery::mock( Dependencies_Double::class )->makePartial();
 
 		$this->assertFalse( $class->get_yoast_seo_version() );
 
@@ -157,7 +157,7 @@ class Yoast_WooCommerce_Dependencies_Test extends TestCase {
 	private function error_message_test( $function_under_test, $expected ) {
 		$this->stubEscapeFunctions();
 
-		$class = Mockery::mock( Yoast_WooCommerce_Dependencies_Double::class )->makePartial();
+		$class = Mockery::mock( Dependencies_Double::class )->makePartial();
 
 		Functions\stubs(
 			[

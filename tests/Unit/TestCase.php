@@ -1,6 +1,6 @@
 <?php
 
-namespace Yoast\WP\Woocommerce\Tests;
+namespace Yoast\WP\Woocommerce\Tests\Unit;
 
 use Brain\Monkey;
 use Mockery;

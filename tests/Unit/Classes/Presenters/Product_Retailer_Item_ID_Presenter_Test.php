@@ -1,12 +1,12 @@
 <?php
 
-namespace Yoast\WP\Woocommerce\Tests\Classes\Presenters;
+namespace Yoast\WP\Woocommerce\Tests\Unit\Classes\Presenters;
 
 use Mockery;
 use WC_Product;
 use WPSEO_WooCommerce_Product_Retailer_Item_ID_Presenter;
 use Yoast\WP\SEO\Presenters\Abstract_Indexable_Tag_Presenter;
-use Yoast\WP\Woocommerce\Tests\TestCase;
+use Yoast\WP\Woocommerce\Tests\Unit\TestCase;
 
 /**
  * Class Product_Retailer_Item_ID_Presenter_Test.

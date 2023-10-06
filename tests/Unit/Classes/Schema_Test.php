@@ -1,6 +1,6 @@
 <?php
 
-namespace Yoast\WP\Woocommerce\Tests\Classes;
+namespace Yoast\WP\Woocommerce\Tests\Unit\Classes;
 
 use Brain\Monkey;
 use Brain\Monkey\Functions;
@@ -10,12 +10,12 @@ use WPSEO_WooCommerce_Schema;
 use Yoast\WP\SEO\Surfaces\Classes_Surface;
 use Yoast\WP\SEO\Surfaces\Helpers_Surface;
 use Yoast\WP\SEO\Surfaces\Meta_Surface;
-use Yoast\WP\Woocommerce\Tests\Doubles\Schema_Double;
-use Yoast\WP\Woocommerce\Tests\Doubles\Schema_IDs_Mock;
+use Yoast\WP\Woocommerce\Tests\Unit\Doubles\Schema_Double;
+use Yoast\WP\Woocommerce\Tests\Unit\Doubles\Schema_IDs_Mock;
 use Yoast\WPTestUtils\BrainMonkey\TestCase;
 
 /**
- * Class WooCommerce_Schema_Test.
+ * Class Schema_Test.
  *
  * @coversDefaultClass \WPSEO_WooCommerce_Schema
  */
@@ -45,7 +45,7 @@ class Schema_Test extends TestCase {
 	/**
 	 * Test setup.
 	 *
-	 * Note: this test class doesn't extend the `Yoast\WP\Woocommerce\Tests\TestCase` class
+	 * Note: this test class doesn't extend the `Yoast\WP\Woocommerce\Tests\Unit\TestCase` class
 	 * as the default stubs declared in the `Yoast\WPTestUtils\BrainMonkey\YoastTestCase` interfer
 	 * with some mockery expectations set in the tests in this class.
 	 *
