@@ -33,6 +33,22 @@ You can find the FAQ [online here](https://kb.yoast.com/kb/category/woocommerce-
 Changelog
 =========
 
+## 15.9
+
+Release date: 2023-11-14
+
+#### Enhancements
+
+* This PR introduces a new way of retrieving translations for Yoast SEO for WooCommerce, by utilizing the TranslationPress service. Instead of having to ship all translations with every release, we can now load the translations on a per-install basis, tailored to the user's setup. This means smaller plugin releases and less bloat on the user's server.
+
+#### Other
+
+* Bumps the minimum required version of Yoast SEO to 21.6.
+* Sets the minimum supported WordPress version to 6.2.
+* Sets the WordPress tested up to version to 6.3.
+* Sets the WordPress tested up to version to 6.4.
+* Users requiring this package via [WP]Packagist can now use the `composer/installers` v2.
+
 ## 15.8
 
 Release date: 2023-07-25
@@ -51,24 +67,6 @@ Release date: 2023-07-25
 * Bumps the minimum required Yoast SEO version to 20.12.
 * Sets the minimum supported WooCommerce version to 7.1.
 * Sets the minimum supported WordPress version to 6.1.
-
-## 15.7
-
-Release date: 2023-04-26
-
-#### Enhancements
-
-* Makes the _SKU_ and _product identifiers_ assessments available for grouped products.
-
-#### Bugfixes
-
-* Fixes a bug where new translations would not be translated.
-
-#### Other
-
-* Bumps the minimum required version of Yoast SEO to 20.6.
-* Drops compatibility with PHP 5.6, 7.0 and 7.1.
-* Sets the WordPress tested up to version to 6.2.
 
 ### Earlier versions
 For the changelog of earlier versions, please refer to [the changelog on yoast.com](https://yoa.st/woo-seo-changelog).
