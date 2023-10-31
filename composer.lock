@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "88c1fc985625a0a15406a01b93f79b18",
+    "content-hash": "0c30523378b7ff5b82677b286d52db70",
     "packages": [
         {
             "name": "composer/installers",
@@ -2385,16 +2385,16 @@
         },
         {
             "name": "yoast/wordpress-seo",
-            "version": "dev-release/21.6",
+            "version": "dev-trunk",
             "source": {
                 "type": "git",
-                "url": "https://github.com/yoast/wordpress-seo",
-                "reference": "14b98de0141e4c0a8e80ccc6b12e1b4b71f5d197"
+                "url": "https://github.com/Yoast/wordpress-seo.git",
+                "reference": "23281fa2183733a2f50b1d27b46b8bf4922e3a0a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yoast/wordpress-seo/zipball/14b98de0141e4c0a8e80ccc6b12e1b4b71f5d197",
-                "reference": "14b98de0141e4c0a8e80ccc6b12e1b4b71f5d197",
+                "url": "https://api.github.com/repos/Yoast/wordpress-seo/zipball/23281fa2183733a2f50b1d27b46b8bf4922e3a0a",
+                "reference": "23281fa2183733a2f50b1d27b46b8bf4922e3a0a",
                 "shasum": ""
             },
             "require": {
@@ -2413,6 +2413,7 @@
                 "yoast/wp-test-utils": "^1.2",
                 "yoast/yoastcs": "^2.3.1"
             },
+            "default-branch": true,
             "type": "wordpress-plugin",
             "autoload": {
                 "classmap": [
@@ -2537,7 +2538,7 @@
                 "wiki": "https://github.com/Yoast/wordpress-seo/wiki",
                 "source": "https://github.com/Yoast/wordpress-seo"
             },
-            "time": "2023-10-31T12:03:14+00:00"
+            "time": "2023-10-31T13:29:11+00:00"
         },
         {
             "name": "yoast/wp-test-utils",
@@ -2679,5 +2680,5 @@
     "platform-overrides": {
         "php": "7.2.5"
     },
-    "plugin-api-version": "2.2.0"
+    "plugin-api-version": "2.6.0"
 }
