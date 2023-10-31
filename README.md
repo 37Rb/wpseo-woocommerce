@@ -45,7 +45,6 @@ Release date: 2023-11-14
 
 * Bumps the minimum required version of Yoast SEO to 21.6.
 * Sets the minimum supported WordPress version to 6.2.
-* Sets the WordPress tested up to version to 6.3.
 * Sets the WordPress tested up to version to 6.4.
 * Users requiring this package via [WP]Packagist can now use the `composer/installers` v2.
 
