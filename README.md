@@ -35,10 +35,11 @@ Changelog
 
 ## 15.9
 
-Release date: 2023-11-14
+Release date: 2023-11-28
 
 #### Enhancements
 
+* Introducing a new feature: AI SEO title and meta description generation for WooCommerce products! To unlock this SEO magic, make sure you have both Yoast SEO Premium and Yoast WooCommerce SEO installed.
 * This PR introduces a new way of retrieving translations for Yoast SEO for WooCommerce, by utilizing the TranslationPress service. Instead of having to ship all translations with every release, we can now load the translations on a per-install basis, tailored to the user's setup. This means smaller plugin releases and less bloat on the user's server.
 
 #### Other
