@@ -114,6 +114,8 @@ class Yoast_WooCommerce_SEO {
 		add_filter( 'wpseo_exclude_from_sitemap_by_post_ids', [ $this, 'filter_woocommerce_pages' ] );
 
 		add_action( 'before_woocommerce_init', [ $this, 'declare_custom_order_tables_compatibility' ] );
+
+		add_action( 'init', [ $this, 'initialize_import_export' ] );
 	}
 
 	/**
@@ -154,6 +156,14 @@ class Yoast_WooCommerce_SEO {
 	public function initialize_translationspress() {
 		$translationspress = new Yoast_WooCommerce_TranslationsPress( YoastSEO()->helpers->date );
 		$translationspress->register_hooks();
+	}
+
+	/**
+	 * Initializes the import_export functionality.
+	 */
+	public function initialize_import_export() {
+		$import_export = new Woocommerce_Import_Export();
+		$import_export->register_hooks();
 	}
 
 	/**
