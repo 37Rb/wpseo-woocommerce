@@ -162,7 +162,7 @@ class Yoast_WooCommerce_SEO {
 	 * Initializes the import_export functionality.
 	 */
 	public function initialize_import_export() {
-		$import_export = new Woocommerce_Import_Export();
+		$import_export = new Yoast_Woocommerce_Import_Export();
 		$import_export->register_hooks();
 	}
 
