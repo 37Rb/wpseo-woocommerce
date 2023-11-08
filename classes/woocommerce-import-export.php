@@ -43,23 +43,28 @@ class Yoast_Woocommerce_Import_Export {
 	 * @return array $columns - The updated column names with the custom potential names.
 	 */
 	public function add_column_to_mapping_screen( $columns ) {
-
 		$columns['GTIN8'] = 'gtin8';
 		$columns['gtin8'] = 'gtin8';
 
 		$columns['GTIN12 / UPC'] = 'gtin12';
+		$columns['gtin12 / upc'] = 'gtin12';
+		$columns['gtin12/upc']   = 'gtin12';
 		$columns['GTIN12']       = 'gtin12';
 		$columns['gtin12']       = 'gtin12';
 		$columns['UPC']          = 'gtin12';
 		$columns['upc']          = 'gtin12';
 
 		$columns['GTIN13 / EAN'] = 'gtin13';
+		$columns['gtin13 / ean'] = 'gtin13';
+		$columns['gtin13/ean']   = 'gtin13';
 		$columns['GTIN13']       = 'gtin13';
 		$columns['gtin13']       = 'gtin13';
 		$columns['EAN']          = 'gtin13';
 		$columns['ean']          = 'gtin13';
 
 		$columns['GTIN14 / ITF-14'] = 'gtin14';
+		$columns['gtin14 / itf-14'] = 'gtin14';
+		$columns['gtin14/itf-14']   = 'gtin14';
 		$columns['GTIN14']          = 'gtin14';
 		$columns['gtin14']          = 'gtin14';
 		$columns['ITF-14']          = 'gtin14';
@@ -81,7 +86,6 @@ class Yoast_Woocommerce_Import_Export {
 	 * @return array $options - The updated column names.
 	 */
 	public function add_column_to_importer( $options ) {
-
 		// column slug => column name.
 		$options['gtin8']  = 'GTIN8';
 		$options['gtin12'] = 'GTIN12 / UPC';
@@ -95,14 +99,13 @@ class Yoast_Woocommerce_Import_Export {
 
 	/**
 	 * Process the data read from the CSV file.
-	 * This just saves the value in meta data, but you can do anything you want here with the data.
+	 * Adds the global identifiers values to the corespondent meta field.
 	 *
 	 * @param WC_Product $object - Product being imported or updated.
 	 * @param array      $data - CSV data read for the product.
 	 * @return WC_Product $object
 	 */
 	public function process_import( $object, $data ) {
-
 		$global_identifier_values   = get_post_meta( $object->id, 'wpseo_global_identifier_values', true );
 		$global_identifier_defaults = [
 			'gtin8'  => '',
@@ -130,7 +133,6 @@ class Yoast_Woocommerce_Import_Export {
 	 * @return array $columns - The updated column names.
 	 */
 	public function add_export_column( $columns ) {
-
 		// column slug => column name.
 		$columns['gtin8']  = 'GTIN8';
 		$columns['gtin12'] = 'GTIN12 / UPC';
@@ -150,26 +152,24 @@ class Yoast_Woocommerce_Import_Export {
 	 * @return mixed $value - Should be in a format that can be output into a text file (string, numeric, etc).
 	 */
 	public function add_export_data_gtin8( $value, $product ) {
-
 		$wpseo_global_identifier_values = get_post_meta( $product->id, 'wpseo_global_identifier_values', true );
 		return $wpseo_global_identifier_values['gtin8'];
 	}
 
 	/**
-	 * Provide the data to be exported for one item in the column.
+	 * Provide the data to be exported for gtin12 item in the column.
 	 *
 	 * @param mixed      $value (default: '').
 	 * @param WC_Product $product - The product object.
 	 * @return mixed $value - Should be in a format that can be output into a text file (string, numeric, etc).
 	 */
 	public function add_export_data_gtin12( $value, $product ) {
-
 		$wpseo_global_identifier_values = get_post_meta( $product->id, 'wpseo_global_identifier_values', true );
 		return $wpseo_global_identifier_values['gtin12'];
 	}
 
 	/**
-	 * Provide the data to be exported for one item in the column.
+	 * Provide the data to be exported for gtin13 item in the column.
 	 *
 	 * @param mixed      $value (default: '').
 	 * @param WC_Product $product - The product object.
@@ -182,40 +182,37 @@ class Yoast_Woocommerce_Import_Export {
 	}
 
 	/**
-	 * Provide the data to be exported for one item in the column.
+	 * Provide the data to be exported for gtin14 item in the column.
 	 *
 	 * @param mixed      $value (default: '').
 	 * @param WC_Product $product - The product object.
 	 * @return mixed $value - Should be in a format that can be output into a text file (string, numeric, etc).
 	 */
 	public function add_export_data_gtin14( $value, $product ) {
-
 		$wpseo_global_identifier_values = get_post_meta( $product->id, 'wpseo_global_identifier_values', true );
 		return $wpseo_global_identifier_values['gtin14'];
 	}
 
 	/**
-	 * Provide the data to be exported for one item in the column.
+	 * Provide the data to be exported for isbn item in the column.
 	 *
 	 * @param mixed      $value (default: '').
 	 * @param WC_Product $product - The product object.
 	 * @return mixed $value - Should be in a format that can be output into a text file (string, numeric, etc).
 	 */
 	public function add_export_data_isbn( $value, $product ) {
-
 		$wpseo_global_identifier_values = get_post_meta( $product->id, 'wpseo_global_identifier_values', true );
 		return $wpseo_global_identifier_values['isbn'];
 	}
 
 	/**
-	 * Provide the data to be exported for one item in the column.
+	 * Provide the data to be exported for mpn item in the column.
 	 *
 	 * @param mixed      $value (default: '').
 	 * @param WC_Product $product - The product object.
 	 * @return mixed $value - Should be in a format that can be output into a text file (string, numeric, etc).
 	 */
 	public function add_export_data_mpn( $value, $product ) {
-
 		$wpseo_global_identifier_values = get_post_meta( $product->id, 'wpseo_global_identifier_values', true );
 		return $wpseo_global_identifier_values['mpn'];
 	}
