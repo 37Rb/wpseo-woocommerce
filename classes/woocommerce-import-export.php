@@ -115,7 +115,7 @@ class Yoast_Woocommerce_Import_Export {
 		$values                     = array_intersect_key( $data, $global_identifier_defaults );
 
 		if ( $values ) {
-			$base   = ( $global_identifier_values ) ? $global_identifier_values : $global_identifier_defaults;
+			$base   = ( $global_identifier_values ) ?: $global_identifier_defaults;
 			$merged = array_merge( $base, $values );
 			update_post_meta( $object->id, 'wpseo_global_identifier_values', $merged );
 		}
