@@ -161,9 +161,9 @@ class WooCommerce_Import_Export_Test extends TestCase {
 	 * Tests add_export_data_custom_column method.
 	 *
 	 * @covers ::add_export_data_custom_column
-	 * 
+	 *
 	 * @dataProvider data_provider_add_export_data_custom_column
-	 * 
+	 *
 	 * @param string $current_filter The current filter.
 	 * @param int    $get_post_meta_times Number of times get_post_meta() is expected to be called.
 	 * @param string $expected The expected result.
@@ -187,16 +187,16 @@ class WooCommerce_Import_Export_Test extends TestCase {
 	 * @return array
 	 */
 	public function data_provider_add_export_data_custom_column() {
-		return[
+		return [
 			'Callback form a woocommerce_product_export_product_column filter' => [
-				'current_filter' => 'woocommerce_product_export_product_column_gtin8',
+				'current_filter'      => 'woocommerce_product_export_product_column_gtin8',
 				'get_post_meta_times' => 1,
-				'expected' => '12345678'
+				'expected'            => '12345678'
 			],
 			'Callback form a filter not woocommerce_product_export_product_column' => [
-				'current_filter' => 'other_filter',
+				'current_filter'      => 'other_filter',
 				'get_post_meta_times' => 0,
-				'expected' => null
+				'expected'            => null
 			],
 		];
 	}
