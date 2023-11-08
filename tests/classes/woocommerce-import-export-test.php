@@ -53,12 +53,12 @@ class WooCommerce_Import_Export_Test extends TestCase {
 		$this->assertNotFalse( has_filter( 'woocommerce_csv_product_import_mapping_options', [ $this->instance, 'add_column_to_importer' ] ), 'Adds columns to import.' );
 		$this->assertEquals( 10, has_filter( 'woocommerce_csv_product_import_mapping_default_columns', [ $this->instance, 'add_column_to_mapping_screen' ] ), 'Adds columns to mapping screen.' );
 
-		$this->assertEquals( 10, has_filter( 'woocommerce_product_export_product_column_gtin8', [ $this->instance, 'add_export_data_custom_column' ] ), 'Adds export data gtin8.' );
-		$this->assertEquals( 10, has_filter( 'woocommerce_product_export_product_column_gtin12', [ $this->instance, 'add_export_data_custom_column' ] ), 'Adds export data gtin12.' );
-		$this->assertEquals( 10, has_filter( 'woocommerce_product_export_product_column_gtin13', [ $this->instance, 'add_export_data_custom_column' ] ), 'Adds export data gtin13.' );
-		$this->assertEquals( 10, has_filter( 'woocommerce_product_export_product_column_gtin14', [ $this->instance, 'add_export_data_custom_column' ] ), 'Adds export data gtin14.' );
-		$this->assertEquals( 10, has_filter( 'woocommerce_product_export_product_column_isbn', [ $this->instance, 'add_export_data_custom_column' ] ), 'Adds export data isbn.' );
-		$this->assertEquals( 10, has_filter( 'woocommerce_product_export_product_column_mpn', [ $this->instance, 'add_export_data_custom_column' ] ), 'Adds export data mpn.' );
+		$this->assertEquals( 10, has_filter( 'woocommerce_product_export_product_column_gtin8', [ $this->instance, 'add_export_data_global_identifier_values' ] ), 'Adds export data gtin8.' );
+		$this->assertEquals( 10, has_filter( 'woocommerce_product_export_product_column_gtin12', [ $this->instance, 'add_export_data_global_identifier_values' ] ), 'Adds export data gtin12.' );
+		$this->assertEquals( 10, has_filter( 'woocommerce_product_export_product_column_gtin13', [ $this->instance, 'add_export_data_global_identifier_values' ] ), 'Adds export data gtin13.' );
+		$this->assertEquals( 10, has_filter( 'woocommerce_product_export_product_column_gtin14', [ $this->instance, 'add_export_data_global_identifier_values' ] ), 'Adds export data gtin14.' );
+		$this->assertEquals( 10, has_filter( 'woocommerce_product_export_product_column_isbn', [ $this->instance, 'add_export_data_global_identifier_values' ] ), 'Adds export data isbn.' );
+		$this->assertEquals( 10, has_filter( 'woocommerce_product_export_product_column_mpn', [ $this->instance, 'add_export_data_global_identifier_values' ] ), 'Adds export data mpn.' );
 	}
 
 	/**
@@ -158,17 +158,17 @@ class WooCommerce_Import_Export_Test extends TestCase {
 	}
 
 	/**
-	 * Tests add_export_data_custom_column method.
+	 * Tests add_export_data_global_identifier_values method.
 	 *
-	 * @covers ::add_export_data_custom_column
+	 * @covers ::add_export_data_global_identifier_values
 	 *
-	 * @dataProvider data_provider_add_export_data_custom_column
+	 * @dataProvider data_provider_add_export_data_global_identifier_values
 	 *
 	 * @param string $current_filter The current filter.
 	 * @param int    $get_post_meta_times Number of times get_post_meta() is expected to be called.
 	 * @param string $expected The expected result.
 	 */
-	public function test_add_export_data_custom_column( $current_filter, $get_post_meta_times, $expected ) {
+	public function test_add_export_data_global_identifier_values( $current_filter, $get_post_meta_times, $expected ) {
 		Functions\expect( 'current_filter' )
 			->once()
 			->andReturn( $current_filter );
@@ -178,15 +178,15 @@ class WooCommerce_Import_Export_Test extends TestCase {
 			->with( $this->product->id, 'wpseo_global_identifier_values', true )
 			->andReturn( [ 'gtin8' => $expected ] );
 
-		$this->assertEquals( $expected, $this->instance->add_export_data_custom_column( '', $this->product ) );
+		$this->assertEquals( $expected, $this->instance->add_export_data_global_identifier_values( '', $this->product ) );
 	}
 
 	/**
-	 * Data provider for the test_add_export_data_custom_column.
+	 * Data provider for the test_add_export_data_global_identifier_values.
 	 *
 	 * @return array
 	 */
-	public function data_provider_add_export_data_custom_column() {
+	public function data_provider_add_export_data_global_identifier_values() {
 		return [
 			'Callback form a woocommerce_product_export_product_column filter' => [
 				'current_filter'      => 'woocommerce_product_export_product_column_gtin8',

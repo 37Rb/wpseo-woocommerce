@@ -27,12 +27,12 @@ class Yoast_Woocommerce_Import_Export {
 
 		add_filter( 'woocommerce_product_import_pre_insert_product_object', [ $this, 'process_import' ], 10, 2 );
 
-		add_filter( 'woocommerce_product_export_product_column_gtin8', [ $this, 'add_export_data_custom_column' ], 10, 2 );
-		add_filter( 'woocommerce_product_export_product_column_gtin12', [ $this, 'add_export_data_custom_column' ], 10, 2 );
-		add_filter( 'woocommerce_product_export_product_column_gtin13', [ $this, 'add_export_data_custom_column' ], 10, 2 );
-		add_filter( 'woocommerce_product_export_product_column_gtin14', [ $this, 'add_export_data_custom_column' ], 10, 2 );
-		add_filter( 'woocommerce_product_export_product_column_isbn', [ $this, 'add_export_data_custom_column' ], 10, 2 );
-		add_filter( 'woocommerce_product_export_product_column_mpn', [ $this, 'add_export_data_custom_column' ], 10, 2 );
+		add_filter( 'woocommerce_product_export_product_column_gtin8', [ $this, 'add_export_data_global_identifier_values' ], 10, 2 );
+		add_filter( 'woocommerce_product_export_product_column_gtin12', [ $this, 'add_export_data_global_identifier_values' ], 10, 2 );
+		add_filter( 'woocommerce_product_export_product_column_gtin13', [ $this, 'add_export_data_global_identifier_values' ], 10, 2 );
+		add_filter( 'woocommerce_product_export_product_column_gtin14', [ $this, 'add_export_data_global_identifier_values' ], 10, 2 );
+		add_filter( 'woocommerce_product_export_product_column_isbn', [ $this, 'add_export_data_global_identifier_values' ], 10, 2 );
+		add_filter( 'woocommerce_product_export_product_column_mpn', [ $this, 'add_export_data_global_identifier_values' ], 10, 2 );
 	}
 
 	/**
@@ -146,13 +146,13 @@ class Yoast_Woocommerce_Import_Export {
 	}
 
 	/**
-	 * Provide the data to be exported for one item in the column.
+	 * Provide the data to be exported for one item in a column of the wpseo global identifier values.
 	 *
 	 * @param mixed      $value (default: '').
 	 * @param WC_Product $product - The product object.
 	 * @return mixed $value - Should be in a format that can be output into a text file (string, numeric, etc).
 	 */
-	public function add_export_data_custom_column( $value, $product ) {
+	public function add_export_data_global_identifier_values( $value, $product ) {
 		$current_hook = current_filter();
 		if ( strpos( $current_hook, 'woocommerce_product_export_product_column_' ) !== false ) {
 			$global_identifier              = str_replace( 'woocommerce_product_export_product_column_', '', $current_hook );
