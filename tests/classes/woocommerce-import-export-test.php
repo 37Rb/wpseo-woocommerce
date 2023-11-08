@@ -183,7 +183,7 @@ class WooCommerce_Import_Export_Test extends TestCase {
 
 	/**
 	 * Data provider for the test_add_export_data_custom_column.
-	 * 
+	 *
 	 * @return array
 	 */
 	public function data_provider_add_export_data_custom_column() {
@@ -191,12 +191,12 @@ class WooCommerce_Import_Export_Test extends TestCase {
 			'Callback form a woocommerce_product_export_product_column filter' => [
 				'current_filter'      => 'woocommerce_product_export_product_column_gtin8',
 				'get_post_meta_times' => 1,
-				'expected'            => '12345678'
+				'expected'            => '12345678',
 			],
 			'Callback form a filter not woocommerce_product_export_product_column' => [
 				'current_filter'      => 'other_filter',
 				'get_post_meta_times' => 0,
-				'expected'            => null
+				'expected'            => null,
 			],
 		];
 	}

@@ -155,7 +155,7 @@ class Yoast_Woocommerce_Import_Export {
 	public function add_export_data_custom_column( $value, $product ) {
 		$current_hook = current_filter();
 		if ( strpos( $current_hook, 'woocommerce_product_export_product_column_' ) !== false ) {
-			$global_identifier              = str_replace( 'woocommerce_product_export_product_column_', "", $current_hook );
+			$global_identifier              = str_replace( 'woocommerce_product_export_product_column_', '', $current_hook );
 			$wpseo_global_identifier_values = get_post_meta( $product->id, 'wpseo_global_identifier_values', true );
 			return $wpseo_global_identifier_values[ $global_identifier ];
 		}
