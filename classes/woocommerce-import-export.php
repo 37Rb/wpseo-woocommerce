@@ -27,12 +27,12 @@ class Yoast_Woocommerce_Import_Export {
 
 		add_filter( 'woocommerce_product_import_pre_insert_product_object', [ $this, 'process_import' ], 10, 2 );
 
-		add_filter( 'woocommerce_product_export_product_column_gtin8', [ $this, 'add_export_data_gtin8' ], 10, 2 );
-		add_filter( 'woocommerce_product_export_product_column_gtin12', [ $this, 'add_export_data_gtin12' ], 10, 2 );
-		add_filter( 'woocommerce_product_export_product_column_gtin13', [ $this, 'add_export_data_gtin13' ], 10, 2 );
-		add_filter( 'woocommerce_product_export_product_column_gtin14', [ $this, 'add_export_data_gtin14' ], 10, 2 );
-		add_filter( 'woocommerce_product_export_product_column_isbn', [ $this, 'add_export_data_isbn' ], 10, 2 );
-		add_filter( 'woocommerce_product_export_product_column_mpn', [ $this, 'add_export_data_mpn' ], 10, 2 );
+		add_filter( 'woocommerce_product_export_product_column_gtin8', [ $this, 'add_export_data_custom_column' ], 10, 2 );
+		add_filter( 'woocommerce_product_export_product_column_gtin12', [ $this, 'add_export_data_custom_column' ], 10, 2 );
+		add_filter( 'woocommerce_product_export_product_column_gtin13', [ $this, 'add_export_data_custom_column' ], 10, 2 );
+		add_filter( 'woocommerce_product_export_product_column_gtin14', [ $this, 'add_export_data_custom_column' ], 10, 2 );
+		add_filter( 'woocommerce_product_export_product_column_isbn', [ $this, 'add_export_data_custom_column' ], 10, 2 );
+		add_filter( 'woocommerce_product_export_product_column_mpn', [ $this, 'add_export_data_custom_column' ], 10, 2 );
 	}
 
 	/**
@@ -152,68 +152,12 @@ class Yoast_Woocommerce_Import_Export {
 	 * @param WC_Product $product - The product object.
 	 * @return mixed $value - Should be in a format that can be output into a text file (string, numeric, etc).
 	 */
-	public function add_export_data_gtin8( $value, $product ) {
-		$wpseo_global_identifier_values = get_post_meta( $product->id, 'wpseo_global_identifier_values', true );
-		return $wpseo_global_identifier_values['gtin8'];
-	}
-
-	/**
-	 * Provide the data to be exported for gtin12 item in the column.
-	 *
-	 * @param mixed      $value (default: '').
-	 * @param WC_Product $product - The product object.
-	 * @return mixed $value - Should be in a format that can be output into a text file (string, numeric, etc).
-	 */
-	public function add_export_data_gtin12( $value, $product ) {
-		$wpseo_global_identifier_values = get_post_meta( $product->id, 'wpseo_global_identifier_values', true );
-		return $wpseo_global_identifier_values['gtin12'];
-	}
-
-	/**
-	 * Provide the data to be exported for gtin13 item in the column.
-	 *
-	 * @param mixed      $value (default: '').
-	 * @param WC_Product $product - The product object.
-	 * @return mixed $value - Should be in a format that can be output into a text file (string, numeric, etc).
-	 */
-	public function add_export_data_gtin13( $value, $product ) {
-		$wpseo_global_identifier_values = get_post_meta( $product->id, 'wpseo_global_identifier_values', true );
-		return $wpseo_global_identifier_values['gtin13'];
-	}
-
-	/**
-	 * Provide the data to be exported for gtin14 item in the column.
-	 *
-	 * @param mixed      $value (default: '').
-	 * @param WC_Product $product - The product object.
-	 * @return mixed $value - Should be in a format that can be output into a text file (string, numeric, etc).
-	 */
-	public function add_export_data_gtin14( $value, $product ) {
-		$wpseo_global_identifier_values = get_post_meta( $product->id, 'wpseo_global_identifier_values', true );
-		return $wpseo_global_identifier_values['gtin14'];
-	}
-
-	/**
-	 * Provide the data to be exported for isbn item in the column.
-	 *
-	 * @param mixed      $value (default: '').
-	 * @param WC_Product $product - The product object.
-	 * @return mixed $value - Should be in a format that can be output into a text file (string, numeric, etc).
-	 */
-	public function add_export_data_isbn( $value, $product ) {
-		$wpseo_global_identifier_values = get_post_meta( $product->id, 'wpseo_global_identifier_values', true );
-		return $wpseo_global_identifier_values['isbn'];
-	}
-
-	/**
-	 * Provide the data to be exported for mpn item in the column.
-	 *
-	 * @param mixed      $value (default: '').
-	 * @param WC_Product $product - The product object.
-	 * @return mixed $value - Should be in a format that can be output into a text file (string, numeric, etc).
-	 */
-	public function add_export_data_mpn( $value, $product ) {
-		$wpseo_global_identifier_values = get_post_meta( $product->id, 'wpseo_global_identifier_values', true );
-		return $wpseo_global_identifier_values['mpn'];
+	public function add_export_data_custom_column( $value, $product ) {
+		$current_hook = current_filter();
+		if ( strpos($current_hook, 'woocommerce_product_export_product_column_') !== false ) {
+			$global_identifier = str_replace( 'woocommerce_product_export_product_column_' , "" , $current_hook);
+			$wpseo_global_identifier_values = get_post_meta( $product->id, 'wpseo_global_identifier_values', true );
+			return $wpseo_global_identifier_values[$global_identifier];
+		}
 	}
 }
