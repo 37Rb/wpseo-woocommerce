@@ -7,7 +7,7 @@
 
 /**
  * The Yoast_Woocommerce_Import_Export class.
- * This class adds the GTIN8, GTIN12, GTIN13, GTIN14, ISBN, and MPN columns to the WooCommerce Product Import/Export screens
+ * This class adds the GTIN8, GTIN12, GTIN13, GTIN14, ISBN, and MPN columns to the WooCommerce Product Import/Export screens.
  */
 class Yoast_Woocommerce_Import_Export {
 
