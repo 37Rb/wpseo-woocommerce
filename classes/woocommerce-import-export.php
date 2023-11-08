@@ -117,7 +117,8 @@ class Yoast_Woocommerce_Import_Export {
 		];
 		$values                     = array_intersect_key( $data, $global_identifier_defaults );
 
-		if ( $values ) {
+		if ( $values && is_array( $values )) {
+			array_map('sanitize_text_field', $value);
 			$base   = ( $global_identifier_values ) ?: $global_identifier_defaults;
 			$merged = array_merge( $base, $values );
 			update_post_meta( $object->id, 'wpseo_global_identifier_values', $merged );
@@ -176,7 +177,6 @@ class Yoast_Woocommerce_Import_Export {
 	 * @return mixed $value - Should be in a format that can be output into a text file (string, numeric, etc).
 	 */
 	public function add_export_data_gtin13( $value, $product ) {
-
 		$wpseo_global_identifier_values = get_post_meta( $product->id, 'wpseo_global_identifier_values', true );
 		return $wpseo_global_identifier_values['gtin13'];
 	}
