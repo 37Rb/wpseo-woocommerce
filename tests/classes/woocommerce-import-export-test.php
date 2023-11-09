@@ -47,10 +47,10 @@ class WooCommerce_Import_Export_Test extends TestCase {
 	public function test_register_hooks() {
 		$this->instance->register_hooks();
 
-		$this->assertNotFalse( has_filter( 'woocommerce_product_export_column_names', [ $this->instance, 'add_export_column' ] ), 'Adds options to export.' );
-		$this->assertNotFalse( has_filter( 'woocommerce_product_export_product_default_columns', [ $this->instance, 'add_export_column' ] ), 'Adds default options to export.' );
+		$this->assertNotFalse( has_filter( 'woocommerce_product_export_column_names', [ $this->instance, 'add_columns' ] ), 'Adds options to export.' );
+		$this->assertNotFalse( has_filter( 'woocommerce_product_export_product_default_columns', [ $this->instance, 'add_columns' ] ), 'Adds default options to export.' );
 
-		$this->assertNotFalse( has_filter( 'woocommerce_csv_product_import_mapping_options', [ $this->instance, 'add_column_to_importer' ] ), 'Adds columns to import.' );
+		$this->assertNotFalse( has_filter( 'woocommerce_csv_product_import_mapping_options', [ $this->instance, 'add_columns' ] ), 'Adds columns to import.' );
 		$this->assertEquals( 10, has_filter( 'woocommerce_csv_product_import_mapping_default_columns', [ $this->instance, 'add_column_to_mapping_screen' ] ), 'Adds columns to mapping screen.' );
 
 		$this->assertEquals( 10, has_filter( 'woocommerce_product_export_product_column_gtin8', [ $this->instance, 'add_export_data_global_identifier_values' ] ), 'Adds export data gtin8.' );
@@ -111,11 +111,11 @@ class WooCommerce_Import_Export_Test extends TestCase {
 	}
 
 	/**
-	 * Tests add_column_to_importer method.
+	 * Tests add_columns method.
 	 *
-	 * @covers ::add_column_to_importer
+	 * @covers ::add_columns
 	 */
-	public function test_add_column_to_importer() {
+	public function test_add_columns() {
 		$columns = [
 			'column1' => 'column1',
 			'column2' => 'column2',
@@ -132,32 +132,7 @@ class WooCommerce_Import_Export_Test extends TestCase {
 			'mpn'     => 'MPN',
 		];
 
-		$this->assertEquals( $expected, $this->instance->add_column_to_importer( $columns ) );
-	}
-
-	/**
-	 * Tests add_export_column method.
-	 *
-	 * @covers ::add_export_column
-	 */
-	public function test_add_export_column() {
-		$columns = [
-			'column1' => 'column1',
-			'column2' => 'column2',
-		];
-
-		$expected = [
-			'column1' => 'column1',
-			'column2' => 'column2',
-			'gtin8'   => 'GTIN8',
-			'gtin12'  => 'GTIN12 / UPC',
-			'gtin13'  => 'GTIN13 / EAN',
-			'gtin14'  => 'GTIN14 / ITF-14',
-			'isbn'    => 'ISBN',
-			'mpn'     => 'MPN',
-		];
-
-		$this->assertEquals( $expected, $this->instance->add_export_column( $columns ) );
+		$this->assertEquals( $expected, $this->instance->add_columns( $columns ) );
 	}
 
 	/**

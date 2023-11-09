@@ -19,10 +19,10 @@ class Yoast_Woocommerce_Import_Export {
 	 * @return void
 	 */
 	public function register_hooks() {
-		add_filter( 'woocommerce_product_export_column_names', [ $this, 'add_export_column' ] );
-		add_filter( 'woocommerce_product_export_product_default_columns', [ $this, 'add_export_column' ] );
+		add_filter( 'woocommerce_product_export_column_names', [ $this, 'add_columns' ] );
+		add_filter( 'woocommerce_product_export_product_default_columns', [ $this, 'add_columns' ] );
 
-		add_filter( 'woocommerce_csv_product_import_mapping_options', [ $this, 'add_column_to_importer' ] );
+		add_filter( 'woocommerce_csv_product_import_mapping_options', [ $this, 'add_columns' ] );
 		add_filter( 'woocommerce_csv_product_import_mapping_default_columns', [ $this, 'add_column_to_mapping_screen' ] );
 
 		add_filter( 'woocommerce_product_import_pre_insert_product_object', [ $this, 'process_import' ], 10, 2 );
@@ -83,24 +83,6 @@ class Yoast_Woocommerce_Import_Export {
 	}
 
 	/**
-	 * Register the wpseo_global_identifier_values columns in the importer.
-	 *
-	 * @param array $options - The column names.
-	 * @return array $options - The updated column names.
-	 */
-	public function add_column_to_importer( $options ) {
-		// column slug => column name.
-		$options['gtin8']  = 'GTIN8';
-		$options['gtin12'] = 'GTIN12 / UPC';
-		$options['gtin13'] = 'GTIN13 / EAN';
-		$options['gtin14'] = 'GTIN14 / ITF-14';
-		$options['isbn']   = 'ISBN';
-		$options['mpn']    = 'MPN';
-
-		return $options;
-	}
-
-	/**
 	 * Process the data read from the CSV file.
 	 * Adds the global identifiers values to the corespondent meta field.
 	 *
@@ -122,12 +104,14 @@ class Yoast_Woocommerce_Import_Export {
 	}
 
 	/**
+	 * Call back functio to add columns.
 	 * Add the custom column to the exporter and the exporter column menu.
+	 * Register the wpseo_global_identifier_values columns in the importer.
 	 *
 	 * @param array $columns - The column names.
 	 * @return array $columns - The updated column names.
 	 */
-	public function add_export_column( $columns ) {
+	public function add_columns( $columns ) {
 		// column slug => column name.
 		$columns['gtin8']  = 'GTIN8';
 		$columns['gtin12'] = 'GTIN12 / UPC';
