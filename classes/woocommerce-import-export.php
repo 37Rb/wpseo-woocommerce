@@ -120,7 +120,7 @@ class Yoast_Woocommerce_Import_Export {
 		];
 		$values                     = array_intersect_key( $data, $global_identifier_defaults );
 
-		if ( $values && is_array( $values ) ) {
+		if ( $values ) {
 			$values = array_map( 'sanitize_text_field', $values );
 			$base   = ( $global_identifier_values && is_array( $global_identifier_values ) ) ? $global_identifier_values : $global_identifier_defaults;
 			$merged = array_merge( $base, $values );
