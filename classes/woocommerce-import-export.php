@@ -162,7 +162,7 @@ class Yoast_Woocommerce_Import_Export {
 	 * This function gets the global identifier values from the product meta.
 	 *
 	 * @param int $product_id - The product id.
-	 * @return void
+	 * @return array $global_identifier_values - The global identifier values.
 	 */
 	private function get_global_identifier_values( $product_id ) {
 		$global_identifier_values = get_post_meta( $product_id, 'wpseo_global_identifier_values', true );
