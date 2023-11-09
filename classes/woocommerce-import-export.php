@@ -47,6 +47,7 @@ class Yoast_Woocommerce_Import_Export {
 		$columns['gtin8'] = 'gtin8';
 
 		$columns['GTIN12 / UPC'] = 'gtin12';
+		$columns['GTIN12/UPC']   = 'gtin12';
 		$columns['gtin12 / upc'] = 'gtin12';
 		$columns['gtin12/upc']   = 'gtin12';
 		$columns['GTIN12']       = 'gtin12';
@@ -55,6 +56,7 @@ class Yoast_Woocommerce_Import_Export {
 		$columns['upc']          = 'gtin12';
 
 		$columns['GTIN13 / EAN'] = 'gtin13';
+		$columns['GTIN13/EAN']   = 'gtin13';
 		$columns['gtin13 / ean'] = 'gtin13';
 		$columns['gtin13/ean']   = 'gtin13';
 		$columns['GTIN13']       = 'gtin13';
@@ -63,6 +65,7 @@ class Yoast_Woocommerce_Import_Export {
 		$columns['ean']          = 'gtin13';
 
 		$columns['GTIN14 / ITF-14'] = 'gtin14';
+		$columns['GTIN14/ITF-14']   = 'gtin14';
 		$columns['gtin14 / itf-14'] = 'gtin14';
 		$columns['gtin14/itf-14']   = 'gtin14';
 		$columns['GTIN14']          = 'gtin14';
