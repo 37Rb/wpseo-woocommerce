@@ -109,21 +109,12 @@ class Yoast_Woocommerce_Import_Export {
 	 * @return WC_Product $object
 	 */
 	public function process_import( $object, $data ) {
-		$global_identifier_values   = get_post_meta( $object->id, 'wpseo_global_identifier_values', true );
-		$global_identifier_defaults = [
-			'gtin8'  => '',
-			'gtin12' => '',
-			'gtin13' => '',
-			'gtin14' => '',
-			'isbn'   => '',
-			'mpn'    => '',
-		];
-		$values                     = array_intersect_key( $data, $global_identifier_defaults );
+		$global_identifier_values = $this->get_global_identifier_values( $object->id );
+		$values                   = array_intersect_key( $data, $global_identifier_values );
 
 		if ( $values ) {
 			$values = array_map( 'sanitize_text_field', $values );
-			$base   = ( $global_identifier_values && is_array( $global_identifier_values ) ) ? $global_identifier_values : $global_identifier_defaults;
-			$merged = array_merge( $base, $values );
+			$merged = array_merge( $global_identifier_values, $values );
 			update_post_meta( $object->id, 'wpseo_global_identifier_values', $merged );
 		}
 
@@ -159,11 +150,34 @@ class Yoast_Woocommerce_Import_Export {
 		$current_hook = current_filter();
 		if ( strpos( $current_hook, 'woocommerce_product_export_product_column_' ) !== false ) {
 			$global_identifier              = str_replace( 'woocommerce_product_export_product_column_', '', $current_hook );
-			$wpseo_global_identifier_values = get_post_meta( $product->id, 'wpseo_global_identifier_values', true );
-			if ( is_array( $wpseo_global_identifier_values ) && array_key_exists( $global_identifier, $wpseo_global_identifier_values ) ) {
+			$wpseo_global_identifier_values = $this->get_global_identifier_values( $product->id );
+			if ( array_key_exists( $global_identifier, $wpseo_global_identifier_values ) ) {
 				return $wpseo_global_identifier_values[ $global_identifier ];
 			}
 		}
 		return '';
+	}
+
+	/**
+	 * This function gets the global identifier values from the product meta.
+	 *
+	 * @param int $product_id - The product id.
+	 * @return void
+	 */
+	private function get_global_identifier_values( $product_id ) {
+		$global_identifier_values = get_post_meta( $product_id, 'wpseo_global_identifier_values', true );
+
+		if ( $global_identifier_values && is_array( $global_identifier_values ) ) {
+			return $global_identifier_values;
+		}
+
+		return [
+			'gtin8'  => '',
+			'gtin12' => '',
+			'gtin13' => '',
+			'gtin14' => '',
+			'isbn'   => '',
+			'mpn'    => '',
+		];
 	}
 }

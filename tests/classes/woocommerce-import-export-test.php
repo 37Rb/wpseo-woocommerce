@@ -164,6 +164,7 @@ class WooCommerce_Import_Export_Test extends TestCase {
 	 * Tests add_export_data_global_identifier_values method.
 	 *
 	 * @covers ::add_export_data_global_identifier_values
+	 * @covers ::get_global_identifier_values
 	 *
 	 * @dataProvider data_provider_add_export_data_global_identifier_values
 	 *
@@ -225,6 +226,7 @@ class WooCommerce_Import_Export_Test extends TestCase {
 	 * @dataProvider data_provider_process_import
 	 *
 	 * @covers ::process_import
+	 * @covers ::get_global_identifier_values
 	 *
 	 * @param array $data                      The data to be imported.
 	 * @param array $global_identifier_values The global identifier values.
