@@ -119,7 +119,7 @@ class Yoast_Woocommerce_Import_Export {
 
 		if ( $values && is_array( $values ) ) {
 			array_map( 'sanitize_text_field', $values );
-			$base   = ( $global_identifier_values ) ? $global_identifier_values : $global_identifier_defaults;
+			$base   = ( $global_identifier_values && is_array( $global_identifier_values ) ) ? $global_identifier_values : $global_identifier_defaults;
 			$merged = array_merge( $base, $values );
 			update_post_meta( $object->id, 'wpseo_global_identifier_values', $merged );
 		}
@@ -157,7 +157,10 @@ class Yoast_Woocommerce_Import_Export {
 		if ( strpos( $current_hook, 'woocommerce_product_export_product_column_' ) !== false ) {
 			$global_identifier              = str_replace( 'woocommerce_product_export_product_column_', '', $current_hook );
 			$wpseo_global_identifier_values = get_post_meta( $product->id, 'wpseo_global_identifier_values', true );
-			return $wpseo_global_identifier_values[ $global_identifier ];
+			if ( is_array( $wpseo_global_identifier_values ) && array_key_exists( $global_identifier, $wpseo_global_identifier_values ) ) {
+				return $wpseo_global_identifier_values[ $global_identifier ];
+			}
 		}
+		return '';
 	}
 }

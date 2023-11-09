@@ -166,9 +166,10 @@ class WooCommerce_Import_Export_Test extends TestCase {
 	 *
 	 * @param string $current_filter The current filter.
 	 * @param int    $get_post_meta_times Number of times get_post_meta() is expected to be called.
+	 * @param array  $global_identifier The global identifier values.
 	 * @param string $expected The expected result.
 	 */
-	public function test_add_export_data_global_identifier_values( $current_filter, $get_post_meta_times, $expected ) {
+	public function test_add_export_data_global_identifier_values( $current_filter, $get_post_meta_times, $global_identifier, $expected ) {
 		Functions\expect( 'current_filter' )
 			->once()
 			->andReturn( $current_filter );
@@ -176,7 +177,7 @@ class WooCommerce_Import_Export_Test extends TestCase {
 		Functions\expect( 'get_post_meta' )
 			->times( $get_post_meta_times )
 			->with( $this->product->id, 'wpseo_global_identifier_values', true )
-			->andReturn( [ 'gtin8' => $expected ] );
+			->andReturn( $global_identifier );
 
 		$this->assertEquals( $expected, $this->instance->add_export_data_global_identifier_values( '', $this->product ) );
 	}
@@ -191,12 +192,26 @@ class WooCommerce_Import_Export_Test extends TestCase {
 			'Callback form a woocommerce_product_export_product_column filter' => [
 				'current_filter'      => 'woocommerce_product_export_product_column_gtin8',
 				'get_post_meta_times' => 1,
+				'global_identifier'   => [ 'gtin8' => '12345678' ],
 				'expected'            => '12345678',
 			],
 			'Callback form a filter not woocommerce_product_export_product_column' => [
 				'current_filter'      => 'other_filter',
 				'get_post_meta_times' => 0,
-				'expected'            => null,
+				'global_identifier'   => [],
+				'expected'            => '',
+			],
+			'No post meta value' => [
+				'current_filter'      => 'woocommerce_product_export_product_column_gtin8',
+				'get_post_meta_times' => 1,
+				'global_identifier'   => false,
+				'expected'            => '',
+			],
+			'No global_identifier in the post meta value' => [
+				'current_filter'      => 'woocommerce_product_export_product_column_gtin8',
+				'get_post_meta_times' => 1,
+				'global_identifier'   => [],
+				'expected'            => '',
 			],
 		];
 	}
@@ -328,6 +343,21 @@ class WooCommerce_Import_Export_Test extends TestCase {
 				],
 				'update_times'             => 0,
 				'expected'                 => [],
+			],
+			'No global_identifier_values post meta' => [
+				'data'                     => [
+					'gtin8' => '123',
+				],
+				'global_identifier_values' => false,
+				'update_times'             => 1,
+				'expected'                 => [
+					'gtin8'  => '123',
+					'gtin12' => '',
+					'gtin13' => '',
+					'gtin14' => '',
+					'isbn'   => '',
+					'mpn'    => '',
+				],
 			],
 		];
 	}
