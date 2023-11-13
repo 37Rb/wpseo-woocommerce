@@ -39,8 +39,9 @@ class Yoast_Woocommerce_Import_Export {
 	 * Add automatic mapping support for wpseo_global_identifier_values options.
 	 * This will automatically select the correct mapping for columns of wpseo_global_identifier_values options.
 	 *
-	 * @param array $columns - The column names.
-	 * @return array $columns - The updated column names with the custom potential names.
+	 * @param array $columns The column names.
+	 *
+	 * @return array $columns The updated column names with the custom potential names.
 	 */
 	public function add_column_to_mapping_screen( $columns ) {
 		$columns['GTIN8'] = 'gtin8';
@@ -86,8 +87,9 @@ class Yoast_Woocommerce_Import_Export {
 	 * Process the data read from the CSV file.
 	 * Adds the global identifiers values to the corespondent meta field.
 	 *
-	 * @param WC_Product $object - Product being imported or updated.
-	 * @param array      $data - CSV data read for the product.
+	 * @param WC_Product $object Product being imported or updated.
+	 * @param array      $data   CSV data read for the product.
+	 *
 	 * @return WC_Product $object
 	 */
 	public function process_import( $object, $data ) {
@@ -104,12 +106,11 @@ class Yoast_Woocommerce_Import_Export {
 	}
 
 	/**
-	 * Call back functio to add columns.
-	 * Add the custom column to the exporter and the exporter column menu.
-	 * Register the wpseo_global_identifier_values columns in the importer.
+	 * Adds the global identifier columns.
 	 *
-	 * @param array $columns - The column names.
-	 * @return array $columns - The updated column names.
+	 * @param array $columns The column names.
+	 *
+	 * @return array $columns The updated column names.
 	 */
 	public function add_columns( $columns ) {
 		// column slug => column name.
@@ -126,9 +127,10 @@ class Yoast_Woocommerce_Import_Export {
 	/**
 	 * Provide the data to be exported for one item in a column of the wpseo global identifier values.
 	 *
-	 * @param mixed      $value (default: '').
-	 * @param WC_Product $product - The product object.
-	 * @return mixed $value - Should be in a format that can be output into a text file (string, numeric, etc).
+	 * @param mixed      $value   (default: '').
+	 * @param WC_Product $product The product object.
+	 *
+	 * @return mixed $value Should be in a format that can be output into a text file (string, numeric, etc).
 	 */
 	public function add_export_data_global_identifier_values( $value, $product ) {
 		$current_hook = current_filter();
@@ -139,14 +141,16 @@ class Yoast_Woocommerce_Import_Export {
 				return $wpseo_global_identifier_values[ $global_identifier ];
 			}
 		}
+
 		return '';
 	}
 
 	/**
 	 * This function gets the global identifier values from the product meta.
 	 *
-	 * @param int $product_id - The product id.
-	 * @return array $global_identifier_values - The global identifier values.
+	 * @param int $product_id The product id.
+	 *
+	 * @return array $global_identifier_values The global identifier values.
 	 */
 	private function get_global_identifier_values( $product_id ) {
 		$global_identifier_values = get_post_meta( $product_id, 'wpseo_global_identifier_values', true );
