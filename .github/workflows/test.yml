@@ -86,7 +86,7 @@ jobs:
 
       # Install dependencies and handle caching in one go.
       # - Updates the test utilities to the most appropriate version for the PHP version on which the tests will be run.
-      # @link https://github.com/marketplace/actions/install-composer-dependencies
+      # @link https://github.com/marketplace/actions/install-php-dependencies-with-composer
       - name: Install Composer dependencies
         uses: ramsey/composer-install@v2
         with:
@@ -205,7 +205,7 @@ jobs:
         run: composer config --unset repositories.wordpress-seo
 
       # Install dependencies and handle caching in one go.
-      # @link https://github.com/marketplace/actions/install-composer-dependencies
+      # @link https://github.com/marketplace/actions/install-php-dependencies-with-composer
       - name: "Composer: remove the PHP platform requirement"
         run: composer config --unset platform.php
 
