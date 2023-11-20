@@ -115,7 +115,7 @@ class Yoast_WooCommerce_SEO {
 
 		add_action( 'before_woocommerce_init', [ $this, 'declare_custom_order_tables_compatibility' ] );
 
-		add_action( 'init', [ $this, 'initialize_import_export' ] );
+		add_action( 'admin_init', [ $this, 'initialize_import_export' ] );
 	}
 
 	/**
