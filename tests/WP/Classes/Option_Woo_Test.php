@@ -47,7 +47,7 @@ class Option_Woo_Test extends TestCase {
 	 *
 	 * @return array[]
 	 */
-	public function validate_option_values() {
+	public static function validate_option_values() {
 		return [
 			// Tests a non defined value.
 			[ 'test', null, 123, null, null ],

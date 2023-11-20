@@ -169,7 +169,7 @@ class TranslationsPress_Test extends TestCase {
 	 *
 	 * @return array[]
 	 */
-	public function site_transient_update_plugins_provider() {
+	public static function site_transient_update_plugins_provider() {
 		$expected               = new stdClass();
 		$expected->translations = [];
 

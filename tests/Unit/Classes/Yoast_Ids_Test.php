@@ -72,7 +72,7 @@ class Yoast_Ids_Test extends TestCase {
 	 *
 	 * @return array
 	 */
-	public function data_save_data() {
+	public static function data_save_data() {
 		return [
 			'all_ok' => [
 				true,
@@ -193,7 +193,7 @@ class Yoast_Ids_Test extends TestCase {
 	 *
 	 * @return array
 	 */
-	public function data_add_variations_global_ids() {
+	public static function data_add_variations_global_ids() {
 		return [
 			[
 				1337,
