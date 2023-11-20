@@ -153,13 +153,8 @@ class Yoast_Woocommerce_Import_Export {
 	 * @return array $global_identifier_values The global identifier values.
 	 */
 	private function get_global_identifier_values( $product_id ) {
-		$global_identifier_values = get_post_meta( $product_id, 'wpseo_global_identifier_values', true );
-
-		if ( $global_identifier_values && is_array( $global_identifier_values ) ) {
-			return $global_identifier_values;
-		}
-
-		return [
+		$global_identifier_values   = get_post_meta( $product_id, 'wpseo_global_identifier_values', true );
+		$global_identifier_defaults = [
 			'gtin8'  => '',
 			'gtin12' => '',
 			'gtin13' => '',
@@ -167,5 +162,11 @@ class Yoast_Woocommerce_Import_Export {
 			'isbn'   => '',
 			'mpn'    => '',
 		];
+
+		if ( $global_identifier_values && is_array( $global_identifier_values ) ) {
+			return array_merge( $global_identifier_defaults, $global_identifier_values );
+		}
+
+		return $global_identifier_defaults;
 	}
 }
