@@ -4,7 +4,7 @@
 	xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/8.5/phpunit.xsd"
 		backupGlobals="false"
 		backupStaticAttributes="false"
-		bootstrap="tests/Unit/bootstrap.php"
+		bootstrap="tests/WP/bootstrap.php"
 		colors="true"
 		convertDeprecationsToExceptions="true"
 		convertErrorsToExceptions="true"
@@ -20,7 +20,7 @@
 	>
 	<testsuites>
 		<testsuite name="wpseo-woocommerce">
-			<directory suffix="Test.php">./tests/Unit/</directory>
+			<directory suffix="Test.php">./tests/WP/</directory>
 		</testsuite>
 	</testsuites>
 
@@ -33,7 +33,7 @@
 
 	<logging>
 		<log type="coverage-text" target="php://stdout" showOnlySummary="true"/>
-		<log type="coverage-clover" target="build/logs/clover.xml"/>
+		<log type="coverage-clover" target="build/logs/clover-wp.xml"/>
 	</logging>
 
 </phpunit>
