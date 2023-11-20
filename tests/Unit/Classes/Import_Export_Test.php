@@ -4,7 +4,7 @@ namespace Yoast\WP\Woocommerce\Tests\Unit\Classes;
 
 use Brain\Monkey\Functions;
 use Yoast_Woocommerce_Import_Export;
-use Yoast\WP\Woocommerce\Tests\TestCase;
+use Yoast\WP\Woocommerce\Tests\Unit\TestCase;
 
 /**
  * Class Import_Export_Test.
