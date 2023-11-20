@@ -1,14 +1,13 @@
 <?php
-/**
- * WooCommerce Yoast SEO plugin test file.
- *
- * @package WPSEO/WooCommerce/Tests
- */
+
+namespace Yoast\WP\Woocommerce\Tests\WP;
+
+use Yoast\WP\Woocommerce\Tests\WP\Doubles\WooCommerce_SEO_Double;
 
 /**
  * Unit tests.
  */
-class Yoast_WooCommerce_SEO_Test extends WPSEO_WooCommerce_UnitTestCase {
+class WooCommerce_SEO_Test extends TestCase {
 
 	/**
 	 * Tests the sitemap filtering of a product that is not hidden.
@@ -23,7 +22,7 @@ class Yoast_WooCommerce_SEO_Test extends WPSEO_WooCommerce_UnitTestCase {
 		);
 
 		$instance = $this
-			->getMockBuilder( 'Yoast_WooCommerce_SEO_Double' )
+			->getMockBuilder( WooCommerce_SEO_Double::class )
 			->disableOriginalConstructor()
 			->setMethods( [ 'excluded_from_catalog' ] )
 			->getMock();
@@ -52,7 +51,7 @@ class Yoast_WooCommerce_SEO_Test extends WPSEO_WooCommerce_UnitTestCase {
 		);
 
 		$instance = $this
-			->getMockBuilder( 'Yoast_WooCommerce_SEO_Double' )
+			->getMockBuilder( WooCommerce_SEO_Double::class )
 			->disableOriginalConstructor()
 			->setMethods( [ 'excluded_from_catalog' ] )
 			->getMock();
@@ -80,7 +79,7 @@ class Yoast_WooCommerce_SEO_Test extends WPSEO_WooCommerce_UnitTestCase {
 		);
 
 		$instance = $this
-			->getMockBuilder( 'Yoast_WooCommerce_SEO_Double' )
+			->getMockBuilder( WooCommerce_SEO_Double::class )
 			->disableOriginalConstructor()
 			->setMethods( [ 'excluded_from_catalog' ] )
 			->getMock();
@@ -102,7 +101,7 @@ class Yoast_WooCommerce_SEO_Test extends WPSEO_WooCommerce_UnitTestCase {
 	 */
 	public function test_filter_hidden_product_when_invalid_post_object_is_given() {
 		$instance = $this
-			->getMockBuilder( 'Yoast_WooCommerce_SEO_Double' )
+			->getMockBuilder( WooCommerce_SEO_Double::class )
 			->disableOriginalConstructor()
 			->setMethods( [ 'excluded_from_catalog' ] )
 			->getMock();
@@ -124,7 +123,7 @@ class Yoast_WooCommerce_SEO_Test extends WPSEO_WooCommerce_UnitTestCase {
 	 */
 	public function test_filter_hidden_product_when_no_url_loc_is_present() {
 		$instance = $this
-			->getMockBuilder( 'Yoast_WooCommerce_SEO_Double' )
+			->getMockBuilder( WooCommerce_SEO_Double::class )
 			->disableOriginalConstructor()
 			->setMethods( [ 'excluded_from_catalog' ] )
 			->getMock();

@@ -1,14 +1,14 @@
 <?php
-/**
- * WooCommerce Yoast SEO plugin test file.
- *
- * @package WPSEO\Tests
- */
+
+namespace Yoast\WP\Woocommerce\Tests\WP\Doubles;
+
+use WP_Post;
+use Yoast_WooCommerce_SEO;
 
 /**
- * Class Yoast_WooCommerce_SEO_Double.
+ * Class WooCommerce_SEO_Double.
  */
-class Yoast_WooCommerce_SEO_Double extends Yoast_WooCommerce_SEO {
+class WooCommerce_SEO_Double extends Yoast_WooCommerce_SEO {
 
 	/**
 	 * Checks the dependencies. Sets a notice when requirements aren't met.

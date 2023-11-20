@@ -1,14 +1,14 @@
 <?php
-/**
- * WooCommerce Yoast SEO plugin test file.
- *
- * @package WPSEO/WooCommerce/Tests
- */
+
+namespace Yoast\WP\Woocommerce\Tests\WP\Classes;
+
+use Yoast\WP\Woocommerce\Tests\WP\Doubles\Option_Woo_Double;
+use Yoast\WP\Woocommerce\Tests\WP\TestCase;
 
 /**
  * Unit tests.
  */
-class WPSEO_Option_Woo_Test extends WPSEO_WooCommerce_UnitTestCase {
+class Option_Woo_Test extends TestCase {
 
 	/**
 	 * Gets the data from the data provider.
@@ -25,13 +25,13 @@ class WPSEO_Option_Woo_Test extends WPSEO_WooCommerce_UnitTestCase {
 	 * @param string           $short      Determines whether the short form should set or not.
 	 */
 	public function test_validate_option( $field_name, $expected, $dirty, $clean, $old, $short = 'off' ) {
-		$option = new WPSEO_Option_Woo_Double();
+		$option = new Option_Woo_Double();
 
 		$dirty = ( $dirty !== null ) ? [ $field_name => $dirty ] : [];
 		$old   = ( $old !== null ) ? [ $field_name => $old ] : [];
 
 		$result = $option->validate_option(
-			array_merge( [ 'short_form' => $short ], $dirty ),
+			\array_merge( [ 'short_form' => $short ], $dirty ),
 			[ $field_name => $clean ],
 			$old
 		);
