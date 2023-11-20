@@ -167,7 +167,7 @@ class Yoast_Woocommerce_Import_Export_Test extends TestCase {
 	 *
 	 * @return array
 	 */
-	public function data_provider_add_export_data_global_identifier_values() {
+	public static function data_provider_add_export_data_global_identifier_values() {
 		return [
 			'Callback form a woocommerce_product_export_product_column filter' => [
 				'current_filter'      => 'woocommerce_product_export_product_column_gtin8',
@@ -228,7 +228,7 @@ class Yoast_Woocommerce_Import_Export_Test extends TestCase {
 	 *
 	 * @return array
 	 */
-	public function data_provider_process_import() {
+	public static function data_provider_process_import() {
 		return [
 			'Update data' => [
 				'data'                     => [
