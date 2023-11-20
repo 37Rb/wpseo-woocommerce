@@ -1,6 +1,6 @@
 <?php
 
-namespace Yoast\WP\Woocommerce\Tests\Doubles;
+namespace Yoast\WP\Woocommerce\Tests\Unit\Doubles;
 
 use WC_Product;
 use WP_Term;

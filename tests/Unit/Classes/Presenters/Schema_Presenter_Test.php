@@ -1,15 +1,13 @@
 <?php
 
-namespace Yoast\WP\Woocommerce\Tests\Classes\Presenters;
+namespace Yoast\WP\Woocommerce\Tests\Unit\Classes\Presenters;
 
 use Mockery;
 use WPSEO_WooCommerce_Schema_Presenter;
-use Yoast\WP\Woocommerce\Tests\TestCase;
+use Yoast\WP\Woocommerce\Tests\Unit\TestCase;
 
 /**
  * Class Schema_Presenter_Test
- *
- * @package Yoast\WP\Woocommerce\Tests\Classes\Presenters
  *
  * @coversDefaultClass WPSEO_WooCommerce_Schema_Presenter
  */

@@ -1,12 +1,12 @@
 <?php
 
-namespace Yoast\WP\Woocommerce\Tests\Classes;
+namespace Yoast\WP\Woocommerce\Tests\Unit\Classes;
 
 use Brain\Monkey;
 use Mockery;
 use WPSEO_WooCommerce_Slack;
 use Yoast\WP\SEO\Presentations\Indexable_Presentation;
-use Yoast\WP\Woocommerce\Tests\TestCase;
+use Yoast\WP\Woocommerce\Tests\Unit\TestCase;
 
 /**
  * Class Slack_Test

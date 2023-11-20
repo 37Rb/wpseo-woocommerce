@@ -1,6 +1,6 @@
 <?php
 
-namespace Yoast\WP\Woocommerce\Tests\Classes\Integrations;
+namespace Yoast\WP\Woocommerce\Tests\Unit\Classes\Integrations;
 
 use Brain\Monkey;
 use Mockery;
@@ -11,13 +11,13 @@ use Yoast\WP\Local\Integrations\TranslationsPress;
 use Yoast\WPTestUtils\BrainMonkey\TestCase;
 
 /**
- * Class Yoast_WooCommerce_TranslationsPress_Test.
+ * Class TranslationsPress_Test.
  *
  * @coversDefaultClass \Yoast_WooCommerce_TranslationsPress
  *
  * @group integrations
  */
-class Yoast_WooCommerce_TranslationsPress_Test extends TestCase {
+class TranslationsPress_Test extends TestCase {
 
 	/**
 	 * The Date Helper object.

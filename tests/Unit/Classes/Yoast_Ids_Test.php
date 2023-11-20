@@ -1,18 +1,18 @@
 <?php
 
-namespace Yoast\WP\Woocommerce\Tests\Classes;
+namespace Yoast\WP\Woocommerce\Tests\Unit\Classes;
 
 use Brain\Monkey\Functions;
 use Mockery;
 use stdClass;
 use WP_Post;
-use Yoast\WP\Woocommerce\Tests\Doubles\Yoast_Ids_Double;
-use Yoast\WP\Woocommerce\Tests\TestCase;
+use Yoast\WP\Woocommerce\Tests\Unit\Doubles\Yoast_Ids_Double;
+use Yoast\WP\Woocommerce\Tests\Unit\TestCase;
 
 /**
- * Class WooCommerce_Schema_Test.
+ * Class Yoast_Ids_Test.
  */
-class WooCommerce_Yoast_Ids_Test extends TestCase {
+class Yoast_Ids_Test extends TestCase {
 
 	/**
 	 * The instance to test.

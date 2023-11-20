@@ -1,13 +1,13 @@
 <?php
 
-namespace Yoast\WP\Woocommerce\Tests\Mocks;
+namespace Yoast\WP\Woocommerce\Tests\Unit\Doubles;
 
 /**
- * Class Schema_IDs.
+ * Class Schema_IDs_Mock.
  *
  * This is a copy from Yoast\WP\SEO\Config\Schema_IDs.
  */
-class Schema_IDs {
+class Schema_IDs_Mock {
 
 	/**
 	 * Hash used for the Author `@id`.

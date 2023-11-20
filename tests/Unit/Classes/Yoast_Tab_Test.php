@@ -1,16 +1,16 @@
 <?php
 
-namespace Yoast\WP\Woocommerce\Tests\Classes;
+namespace Yoast\WP\Woocommerce\Tests\Unit\Classes;
 
 use Brain\Monkey\Functions;
 use WPSEO_WooCommerce_Yoast_Tab;
-use Yoast\WP\Woocommerce\Tests\Doubles\Yoast_Tab_Double;
-use Yoast\WP\Woocommerce\Tests\TestCase;
+use Yoast\WP\Woocommerce\Tests\Unit\Doubles\Yoast_Tab_Double;
+use Yoast\WP\Woocommerce\Tests\Unit\TestCase;
 
 /**
- * Class WooCommerce_Schema_Test.
+ * Class Yoast_Tab_Test.
  */
-class WooCommerce_Yoast_Tab_Test extends TestCase {
+class Yoast_Tab_Test extends TestCase {
 
 		/**
 		 * Removes the used option.

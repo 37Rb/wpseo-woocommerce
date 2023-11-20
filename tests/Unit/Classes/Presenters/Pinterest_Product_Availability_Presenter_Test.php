@@ -1,21 +1,21 @@
 <?php
 
-namespace Yoast\WP\Woocommerce\Tests\Classes\Presenters;
+namespace Yoast\WP\Woocommerce\Tests\Unit\Classes\Presenters;
 
 use Mockery;
 use WC_Product;
-use WPSEO_WooCommerce_Product_Availability_Presenter;
+use WPSEO_WooCommerce_Pinterest_Product_Availability_Presenter;
 use Yoast\WP\SEO\Presenters\Abstract_Indexable_Tag_Presenter;
-use Yoast\WP\Woocommerce\Tests\TestCase;
+use Yoast\WP\Woocommerce\Tests\Unit\TestCase;
 
 /**
- * Class Product_Availability_Presenter_Test.
+ * Class Pinterest_Product_Availability_Presenter_Test.
  *
- * @coversDefaultClass \WPSEO_WooCommerce_Product_Availability_Presenter
+ * @coversDefaultClass \WPSEO_WooCommerce_Pinterest_Product_Availability_Presenter
  *
  * @group presenters
  */
-class Product_Availability_Presenter_Test extends TestCase {
+class Pinterest_Product_Availability_Presenter_Test extends TestCase {
 
 	/**
 	 * Holds the product.
@@ -41,7 +41,7 @@ class Product_Availability_Presenter_Test extends TestCase {
 	 * @covers \WPSEO_WooCommerce_Abstract_Product_Presenter::__construct
 	 */
 	public function test_construct() {
-		$instance = new WPSEO_WooCommerce_Product_Availability_Presenter( $this->product, false, true );
+		$instance = new WPSEO_WooCommerce_Pinterest_Product_Availability_Presenter( $this->product, false, true );
 
 		$this->assertSame( $this->product, $this->getPropertyValue( $instance, 'product' ) );
 		$this->assertSame( false, $this->getPropertyValue( $instance, 'is_on_backorder' ) );
@@ -54,7 +54,7 @@ class Product_Availability_Presenter_Test extends TestCase {
 	 * @coversNothing
 	 */
 	public function test_tag_format() {
-		$instance = new WPSEO_WooCommerce_Product_Availability_Presenter( $this->product, false );
+		$instance = new WPSEO_WooCommerce_Pinterest_Product_Availability_Presenter( $this->product, false );
 
 		$this->assertSame(
 			Abstract_Indexable_Tag_Presenter::META_PROPERTY_CONTENT,
@@ -68,7 +68,7 @@ class Product_Availability_Presenter_Test extends TestCase {
 	 * @covers ::get
 	 */
 	public function test_get() {
-		$instance = new WPSEO_WooCommerce_Product_Availability_Presenter( $this->product, false, false );
+		$instance = new WPSEO_WooCommerce_Pinterest_Product_Availability_Presenter( $this->product, false, false );
 
 		$this->assertSame( 'out of stock', $instance->get() );
 	}
@@ -79,9 +79,9 @@ class Product_Availability_Presenter_Test extends TestCase {
 	 * @covers ::get
 	 */
 	public function test_get_on_backorder() {
-		$instance = new WPSEO_WooCommerce_Product_Availability_Presenter( $this->product, true );
+		$instance = new WPSEO_WooCommerce_Pinterest_Product_Availability_Presenter( $this->product, true );
 
-		$this->assertSame( 'available for order', $instance->get() );
+		$this->assertSame( 'backorder', $instance->get() );
 	}
 
 	/**
@@ -90,7 +90,7 @@ class Product_Availability_Presenter_Test extends TestCase {
 	 * @covers ::get
 	 */
 	public function test_get_in_stock() {
-		$instance = new WPSEO_WooCommerce_Product_Availability_Presenter( $this->product, false, true );
+		$instance = new WPSEO_WooCommerce_Pinterest_Product_Availability_Presenter( $this->product, false, true );
 
 		$this->assertSame( 'instock', $instance->get() );
 	}

@@ -39,10 +39,12 @@
 	},
 	"autoload-dev": {
 		"classmap": [
-			"tests/",
 			"integration-tests/",
 			"config/"
-		]
+		],
+		"psr-4": {
+			"Yoast\\WP\\Woocommerce\\Tests\\": "tests/"
+		}
 	},
 	"config": {
 		"allow-plugins": {

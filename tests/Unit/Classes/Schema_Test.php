@@ -1,28 +1,51 @@
 <?php
 
-namespace Yoast\WP\Woocommerce\Tests\Classes;
+namespace Yoast\WP\Woocommerce\Tests\Unit\Classes;
 
 use Brain\Monkey;
 use Brain\Monkey\Functions;
 use Mockery;
+use stdClass;
 use WPSEO_WooCommerce_Schema;
-use Yoast\WP\Woocommerce\Tests\Doubles\Schema_Double;
-use Yoast\WP\Woocommerce\Tests\Mocks\Schema_IDs;
+use Yoast\WP\SEO\Surfaces\Classes_Surface;
+use Yoast\WP\SEO\Surfaces\Helpers_Surface;
+use Yoast\WP\SEO\Surfaces\Meta_Surface;
+use Yoast\WP\Woocommerce\Tests\Unit\Doubles\Schema_Double;
+use Yoast\WP\Woocommerce\Tests\Unit\Doubles\Schema_IDs_Mock;
 use Yoast\WPTestUtils\BrainMonkey\TestCase;
 
 /**
- * Class WooCommerce_Schema_Test.
+ * Class Schema_Test.
  *
  * @coversDefaultClass \WPSEO_WooCommerce_Schema
  */
 class Schema_Test extends TestCase {
 
-	use YoastSEO;
+	/**
+	 * Holds the classes surface.
+	 *
+	 * @var Classes_Surface|Mockery\MockInterface
+	 */
+	public $classes;
+
+	/**
+	 * Holds the meta surface.
+	 *
+	 * @var Meta_Surface|Mockery\MockInterface
+	 */
+	public $meta;
+
+	/**
+	 * Holds the helpers surface.
+	 *
+	 * @var Helpers_Surface|stdClass
+	 */
+	public $helpers;
 
 	/**
 	 * Test setup.
 	 *
-	 * Note: this test class doesn't extend the `Yoast\WP\Woocommerce\Tests\TestCase` class
+	 * Note: this test class doesn't extend the `Yoast\WP\Woocommerce\Tests\Unit\TestCase` class
 	 * as the default stubs declared in the `Yoast\WPTestUtils\BrainMonkey\YoastTestCase` interfer
 	 * with some mockery expectations set in the tests in this class.
 	 *
@@ -49,9 +72,9 @@ class Schema_Test extends TestCase {
 			->with( Mockery::anyOf( [ 'wpseo', 'wpseo_titles', 'wpseo_taxonomy_meta', 'wpseo_social', 'wpseo_ms' ] ) )
 			->andReturn( [] );
 
-		Mockery::mock( 'overload:Yoast\WP\SEO\Config\Schema_IDs', new Schema_IDs() );
+		Mockery::mock( 'overload:Yoast\WP\SEO\Config\Schema_IDs', new Schema_IDs_Mock() );
 
-		$this->set_instance();
+		$this->mock_yoastseo();
 	}
 
 	/**
@@ -1856,5 +1879,33 @@ class Schema_Test extends TestCase {
 		$output = $schema->filter_offers( $input, $product );
 
 		$this->assertSame( $expected_output, $output );
+	}
+
+	/**
+	 * Mocks the YoastSEO function for the Schema tests.
+	 *
+	 * @return void
+	 */
+	private function mock_yoastseo() {
+		$this->classes = Mockery::mock( 'Yoast\WP\SEO\Surfaces\Classes_Surface' );
+		$this->meta    = Mockery::mock( 'Yoast\WP\SEO\Surfaces\Meta_Surface' );
+		$this->helpers = new stdClass();
+
+		$this->helpers->open_graph = Mockery::mock( 'Yoast\WP\SEO\Surfaces\Open_Graph_Helpers_Surface' );
+		$this->helpers->schema     = new stdClass();
+		$this->helpers->twitter    = Mockery::mock( 'Yoast\WP\SEO\Surfaces\Twitter_Helpers_Surface' );
+
+		$this->helpers->schema->image = Mockery::mock();
+
+		Functions\expect( 'YoastSEO' )
+			->zeroOrMoreTimes()
+			->withNoArgs()
+			->andReturn(
+				(object) [
+					'classes' => $this->classes,
+					'meta'    => $this->meta,
+					'helpers' => $this->helpers,
+				]
+			);
 	}
 }

@@ -1,14 +1,14 @@
 <?php
 
-namespace Yoast\WP\Woocommerce\Tests\Classes;
+namespace Yoast\WP\Woocommerce\Tests\Unit\Classes;
 
 use Brain\Monkey\Functions;
 use Mockery;
 use WPSEO_WooCommerce_OpenGraph;
-use Yoast\WP\Woocommerce\Tests\TestCase;
+use Yoast\WP\Woocommerce\Tests\Unit\TestCase;
 
 /**
- * Class WooCommerce_Schema_Test.
+ * Class OpenGraph_Test.
  */
 class OpenGraph_Test extends TestCase {
 
