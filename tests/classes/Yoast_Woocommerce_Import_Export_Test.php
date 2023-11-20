@@ -7,11 +7,11 @@ use Yoast_Woocommerce_Import_Export;
 use Yoast\WP\Woocommerce\Tests\TestCase;
 
 /**
- * Class WooCommerce_Import_Export_Test.
+ * Class Yoast_Woocommerce_Import_Export_Test.
  *
  * @coversDefaultClass Yoast_Woocommerce_Import_Export
  */
-class WooCommerce_Import_Export_Test extends TestCase {
+class Yoast_Woocommerce_Import_Export_Test extends TestCase {
 
 	/**
 	 * The instance of the class under test.
