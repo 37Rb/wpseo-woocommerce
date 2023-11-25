@@ -91,7 +91,7 @@ jobs:
       # however, Composer packages downloaded are not cached via Grunt.
       # Running `composer install` ahead of time will ensure that the cache is warmed up
       # and available across runs of the same workflow.
-      # @link https://github.com/marketplace/actions/install-composer-dependencies
+      # @link https://github.com/marketplace/actions/install-php-dependencies-with-composer
       #
       # For this particular workflow, this is even more important due to the
       # yoastseo:link:vendor/yoast/wordpress-seo/packages/yoastseo dependency.
