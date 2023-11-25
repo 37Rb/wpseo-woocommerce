@@ -13,7 +13,8 @@
 	"homepage": "https://yoast.com/wordpress/plugins/yoast-woocommerce-seo/",
 	"support": {
 		"issues": "https://github.com/Yoast/wpseo-woocommerce/issues",
-		"source": "https://github.com/Yoast/wpseo-woocommerce"
+		"source": "https://github.com/Yoast/wpseo-woocommerce",
+		"security": "https://yoast.com/security-program/"
 	},
 	"require": {
 		"php": "^7.2.5 || ^8.0",
