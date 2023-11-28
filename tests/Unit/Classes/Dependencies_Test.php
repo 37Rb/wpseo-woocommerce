@@ -21,7 +21,7 @@ class Dependencies_Test extends TestCase {
 	 */
 	public function test_check_dependencies() {
 		$valid_wp_version        = '6.2';
-		$valid_yoast_seo_version = '21.6';
+		$valid_yoast_seo_version = '21.7';
 
 		$class = Mockery::mock( Dependencies_Double::class )->makePartial();
 
