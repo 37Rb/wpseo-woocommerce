@@ -33,6 +33,20 @@ You can find the FAQ [online here](https://kb.yoast.com/kb/category/woocommerce-
 Changelog
 =========
 
+## 16.0
+
+Release date: 2023-12-12
+
+#### Enhancements
+
+* Adds support for global identifier values (GTIN8, GTIN12 / UPC, GTIN13 / EAN, GTIN14 / ITF-14, ISBN, MPN) into the WooCommerce Product Import/Export feature.
+
+#### Other
+
+* Bumps the minimum required version of Yoast SEO to 21.7.
+* Improve discoverability of security policy
+* The plugin has no known incompatibilities with PHP 8.3
+
 ## 15.9
 
 Release date: 2023-11-28
@@ -50,25 +64,6 @@ Give your store the edge with our AI-enhanced WooCommerce SEO tools! Rapidly gen
 * Sets the minimum supported WordPress version to 6.2.
 * Sets the WordPress tested up to version to 6.4.
 * Users requiring this package via [WP]Packagist can now use the `composer/installers` v2.
-
-## 15.8
-
-Release date: 2023-07-25
-
-#### Enhancements
-
-* Adds an edit button to the SKU and Product identifier assessments on product pages if the Yoast SEO Premium plugin is installed (version 20.12 or higher).
-* Ensures compatibility of the breadcrumbs replacement feature with WooCommerce 7.9.0 when using blockified template for single products.
-
-#### Bugfixes
-
-* Fixes a bug where the Yoast SEO metabox would not load when the short description metabox had been deactivated.
-
-#### Other
-
-* Bumps the minimum required Yoast SEO version to 20.12.
-* Sets the minimum supported WooCommerce version to 7.1.
-* Sets the minimum supported WordPress version to 6.1.
 
 ### Earlier versions
 For the changelog of earlier versions, please refer to [the changelog on yoast.com](https://yoa.st/woo-seo-changelog).
