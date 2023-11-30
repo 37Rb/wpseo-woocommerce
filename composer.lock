@@ -2547,7 +2547,7 @@
                 "source": "https://github.com/Yoast/wordpress-seo",
                 "security": "https://yoast.com/security-program/"
             },
-            "time": "2023-11-28T13:34:43+00:00"
+            "time": "2023-11-30T12:37:02+00:00"
         },
         {
             "name": "yoast/wp-test-utils",

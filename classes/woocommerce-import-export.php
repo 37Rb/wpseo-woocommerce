@@ -87,22 +87,23 @@ class Yoast_Woocommerce_Import_Export {
 	 * Process the data read from the CSV file.
 	 * Adds the global identifiers values to the corespondent meta field.
 	 *
-	 * @param WC_Product $object Product being imported or updated.
-	 * @param array      $data   CSV data read for the product.
+	 * @param WC_Product $product Product being imported or updated.
+	 * @param array      $data    CSV data read for the product.
 	 *
 	 * @return WC_Product $object
 	 */
-	public function process_import( $object, $data ) {
-		$global_identifier_values = $this->get_global_identifier_values( $object->id );
+	public function process_import( $product, $data ) {
+		$global_identifier_values = $this->get_global_identifier_values( $product );
 		$values                   = array_intersect_key( $data, $global_identifier_values );
+		$meta_name                = $this->get_global_identifier_meta_name( $product->get_type() );
 
 		if ( $values ) {
 			$values = array_map( 'sanitize_text_field', $values );
 			$merged = array_merge( $global_identifier_values, $values );
-			update_post_meta( $object->id, 'wpseo_global_identifier_values', $merged );
+			update_post_meta( $product->get_id(), $meta_name, $merged );
 		}
 
-		return $object;
+		return $product;
 	}
 
 	/**
@@ -136,7 +137,7 @@ class Yoast_Woocommerce_Import_Export {
 		$current_hook = current_filter();
 		if ( strpos( $current_hook, 'woocommerce_product_export_product_column_' ) === 0 ) {
 			$global_identifier              = str_replace( 'woocommerce_product_export_product_column_', '', $current_hook );
-			$wpseo_global_identifier_values = $this->get_global_identifier_values( $product->id );
+			$wpseo_global_identifier_values = $this->get_global_identifier_values( $product );
 			if ( array_key_exists( $global_identifier, $wpseo_global_identifier_values ) ) {
 				return $wpseo_global_identifier_values[ $global_identifier ];
 			}
@@ -148,12 +149,14 @@ class Yoast_Woocommerce_Import_Export {
 	/**
 	 * This function gets the global identifier values from the product meta.
 	 *
-	 * @param int $product_id The product id.
+	 * @param WC_Product $product The product.
 	 *
 	 * @return array $global_identifier_values The global identifier values.
 	 */
-	private function get_global_identifier_values( $product_id ) {
-		$global_identifier_values   = get_post_meta( $product_id, 'wpseo_global_identifier_values', true );
+	private function get_global_identifier_values( $product ) {
+		$meta_name = $this->get_global_identifier_meta_name( $product->get_type() );
+
+		$global_identifier_values   = get_post_meta( $product->get_id(), $meta_name, true );
 		$global_identifier_defaults = [
 			'gtin8'  => '',
 			'gtin12' => '',
@@ -168,5 +171,19 @@ class Yoast_Woocommerce_Import_Export {
 		}
 
 		return $global_identifier_defaults;
+	}
+
+	/**
+	 * Gets the meta name to use, depending on whether it's a product or a variation.
+	 *
+	 * @param string $product_type The product type.
+	 *
+	 * @return string The meta name to use.
+	 */
+	private function get_global_identifier_meta_name( $product_type ) {
+		if ( $product_type === 'variation' ) {
+			return 'wpseo_variation_global_identifiers_values';
+		}
+		return 'wpseo_global_identifier_values';
 	}
 }
