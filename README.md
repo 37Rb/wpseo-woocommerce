@@ -39,13 +39,13 @@ Release date: 2023-12-12
 
 #### Enhancements
 
-* Adds support for global identifier values (GTIN8, GTIN12 / UPC, GTIN13 / EAN, GTIN14 / ITF-14, ISBN, MPN) into the WooCommerce Product Import/Export feature.
+* Adds support for global identifier values (GTIN8, GTIN12 / UPC, GTIN13 / EAN, GTIN14 / ITF-14, ISBN, MPN) into the Import/Export feature of the WooCommerce Product.
 
 #### Other
 
 * Bumps the minimum required version of Yoast SEO to 21.7.
-* Improve discoverability of security policy
-* The plugin has no known incompatibilities with PHP 8.3
+* Adds checks to ensure that the plugin has no known incompatibilities with PHP 8.3.
+* Improves the discoverability of the security policy.
 
 ## 15.9
 
