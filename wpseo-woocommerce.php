@@ -16,6 +16,7 @@
  * Domain Path: /languages/
  * Requires at least: 6.0
  * Requires PHP: 7.2.5
+ * Woo: 18734003003170:c0867ce4987fe55fc10b0e9f6d29064b
  *
  * WC requires at least: 7.1
  * WC tested up to: 8.3
