@@ -4,7 +4,7 @@ WooCommerce Yoast SEO
 =====================
 Requires at least: 6.2
 Tested up to: 6.4
-Stable tag: 16.0-RC2
+Stable tag: 16.0
 Requires PHP: 7.2.5
 Depends: Yoast SEO, WooCommerce
 
@@ -37,15 +37,17 @@ Changelog
 
 Release date: 2023-12-12
 
+The last release of WooCommerce SEO received generative AI support for product titles and meta descriptions. In WooCommerce SEO 16.0, we added another great feature: easy import and export of global identifier values like GTIN8 and UPC. Check out this great timesaver! Find out more about what's new in Yoast WooCommerce SEO 16.0 in [our release post](https://yoa.st/release-12-12-23)!
+
 #### Enhancements
 
-* Adds support for global identifier values (GTIN8, GTIN12 / UPC, GTIN13 / EAN, GTIN14 / ITF-14, ISBN, MPN) into the WooCommerce Product Import/Export feature.
+* Adds support for global identifier values (GTIN8, GTIN12 / UPC, GTIN13 / EAN, GTIN14 / ITF-14, ISBN, MPN) into the Import/Export feature of the WooCommerce Product.
 
 #### Other
 
 * Bumps the minimum required version of Yoast SEO to 21.7.
-* Improve discoverability of security policy
-* The plugin has no known incompatibilities with PHP 8.3
+* Adds checks to ensure that the plugin has no known incompatibilities with PHP 8.3.
+* Improves the discoverability of the security policy.
 
 ## 15.9
 
